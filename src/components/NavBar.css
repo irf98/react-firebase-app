@@ -9,9 +9,16 @@
     top: 0;
 }
 
-.LeftNav, .RightNav {
+.RightNav {
     padding: 10px;
     margin: 10px;
+    width: 285px;
+}
+
+.LeftNav {
+    padding: 10px;
+    margin: 10px;
+    width: 260px;
 }
 
 .NavOptionsLeft, .NavOptionsRight {
@@ -23,6 +30,7 @@
 .LogoName {
     margin: 0 auto;
     font-size: larger;
+    width: 290px;
 }
 
 .Option {
@@ -32,4 +40,3 @@
     font-weight: bold;
     cursor: pointer;
 }
-

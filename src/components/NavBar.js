@@ -1,4 +1,6 @@
 import './NavBar.css';
+import './CartWidget.js';
+import CartWidget from './CartWidget.js';
 
 const NavBar = () => {
     return (
@@ -17,6 +19,7 @@ const NavBar = () => {
                 <div className='NavOptionsRight'>
                     <button className='Option'>Sign In</button>
                     <button className='Option'>Sign Up</button>
+                    <CartWidget/>
                 </div>
             </div>
         </nav>
