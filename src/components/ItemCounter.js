@@ -7,9 +7,9 @@ const ItemCounter = () => {
     const [count, setCount] = useState(0);
 
     return (
-        <div className='CounterButtons'>
-            <h4>Quantity: {count}</h4>
+        <div className='ItemCounter'>
             <button className='Counter' onClick={() => count > 0 ? setCount (count - 1) : setCount (count)}>-</button>
+            <h4>{count}</h4>
             <button className='Counter' onClick={() => count < Stock ? setCount (count + 1) : setCount (count)}>+</button>
         </div>
     );

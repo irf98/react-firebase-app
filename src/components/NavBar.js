@@ -5,7 +5,7 @@ const NavBar = () => {
     return (
         <nav className='NavBar'>
             <div className='NavLogo'>
-                <h1 className='LogoName'>Web Store</h1>
+                <h1 className='LogoName'>Movies Store</h1>
             </div>
             <div className='LeftNav'>
                 <div className='NavOptionsLeft'>
@@ -18,7 +18,7 @@ const NavBar = () => {
                 <div className='NavOptionsRight'>
                     <button className='Option'>Sign In</button>
                     <button className='Option'>Sign Up</button>
-                    <CartWidget/>
+                    <CartWidget />
                 </div>
             </div>
         </nav>

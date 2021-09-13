@@ -1,18 +1,31 @@
-.CounterButtons {
-    margin: 50px;
-    padding: 20px;
-    background-color: #222222;
-    box-shadow: 1px 2px 4px black;
-    border-radius: 5px;
+.ItemCounter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 340px;
+    height: 30px;
 }
 
-.CounterButtons h4 {
-    margin-top: 10px;
+.ItemCounter h4 {
+    margin: 0;
+    width: 340px;
+    text-align: center;
 }
 
 .Counter {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    font-weight: bolder;
+    font-size: medium;
     cursor: pointer;
-    width: 50px;
+    background-color: #f31313;
+    border: #f31313;
+    color: rgb(214, 207, 207);
+}
+
+.Counter:hover {
+    background-color: #b90e0e;
 }

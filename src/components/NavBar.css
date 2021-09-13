@@ -4,9 +4,10 @@
     align-items: center;
     width: 100%;
     height: 70px;
-    background-color: black;
     position: fixed;
     top: 0;
+    background-color: #050505;
+    border-bottom: 4px solid  #f3ce13;
 }
 
 .RightNav {
@@ -37,6 +38,15 @@
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px 10px 5px 10px;
+    height: 30px;
+    width: 70px;
     font-weight: bold;
     cursor: pointer;
+    background-color: rgb(214, 207, 207);
+    border: rgb(214, 207, 207);
+    border-radius: 3px;
+}
+
+.Option:hover {
+    background-color: rgb(165, 160, 160);
 }

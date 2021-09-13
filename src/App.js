@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import './components/NavBar';
 import NavBar from './components/NavBar';
@@ -8,10 +7,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar/>
-        <ItemListContainer/>
-        <img src={logo} className="App-logo" alt="logo" />
+        <NavBar />
       </header>
+      <main className='App-main'>
+        <ItemListContainer />
+      </main>
     </div>
   );
 }

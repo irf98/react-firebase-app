@@ -1,11 +1,10 @@
 import './ItemListContainer.css';
-import ItemCounter from './ItemCounter.js';
+import Item from './Item.js';
 
 const ItemListContainer = () => {
     return (
         <div className='ItemListContainer'>
-            <h3 className='ContainerText'>Web Store coming soon</h3>
-            <ItemCounter />
+            <Item />
         </div>
     );
 }
