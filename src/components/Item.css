@@ -1,9 +1,3 @@
-.ItemContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
 .ItemDisplay {
     display: inline-block;
     vertical-align: top;
