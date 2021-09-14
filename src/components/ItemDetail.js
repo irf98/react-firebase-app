@@ -1,4 +1,4 @@
-import './ItemList.css';
+import './ItemDetail.css';
 import Item from './Item.js';
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ const Catalogue = [
 
 ];
 
-const ItemList = () => {
+const ItemDetail = () => {
     
     const [itemList, setItemList] = useState([]);
 
@@ -31,4 +31,4 @@ const ItemList = () => {
     );
 }
 
-export default ItemList;
+export default ItemDetail;
