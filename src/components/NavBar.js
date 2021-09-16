@@ -1,5 +1,6 @@
 import './NavBar.css';
 import CartWidget from './CartWidget.js';
+import { IoSearch, IoStar } from "react-icons/io5";
 
 const NavBar = () => {
     return (
@@ -9,9 +10,11 @@ const NavBar = () => {
             </div>
             <div className='LeftNav'>
                 <div className='NavOptionsLeft'>
-                    <button className='Option'>Home</button>
-                    <button className='Option'>About</button>
-                    <button className='Option'>Wishlist</button>
+                    <form className='NavSearch'>
+                        <input className='NavSearchInput' type='search' placeholder='Search...' />
+                        <button className='SearchButton' type='submit' title='Search'><IoSearch /></button>
+                        <button className='Wishlist' title='Wishlist'><IoStar /></button>
+                    </form>
                 </div>
             </div>
             <div className='RightNav'>

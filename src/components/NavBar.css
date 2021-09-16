@@ -11,28 +11,78 @@
 }
 
 .RightNav {
+    display: flex;
+    justify-content: center;
     padding: 10px;
     margin: 10px;
     width: 285px;
 }
 
 .LeftNav {
+    display: flex;
+    justify-content: center;
     padding: 10px;
     margin: 10px;
-    width: 260px;
+    width: 800px;
 }
 
-.NavOptionsLeft, .NavOptionsRight {
+.NavOptionsLeft {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.NavOptionsRight {
     display: flex;
     justify-content: space-between;
     text-align: center;
 }
 
 .LogoName {
-    margin: 0 auto;
+    margin: 5px;
+    padding: 5px;
     font-size: larger;
-    width: 290px;
+    width: 220px;
+    cursor: pointer;
     color: rgb(214, 207, 207);
+}
+
+.NavSearch {
+    display: flex;
+    align-items: center;
+}
+
+.NavSearchInput {
+    width: 700px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(236, 228, 228);
+}
+
+.SearchButton {
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
+.SearchButton:hover {
+    background-color: #a38a0a;
+}
+
+.Wishlist {
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(214, 207, 207);
+    border: rgb(214, 207, 207);
+    border-radius: 3px;
 }
 
 .Option {
@@ -48,6 +98,6 @@
     border-radius: 3px;
 }
 
-.Option:hover {
+.Option:hover, .Wishlist:hover {
     background-color: rgb(165, 160, 160);
 }
