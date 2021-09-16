@@ -19,8 +19,24 @@
 
 .App-main {
   margin: 0 auto;
-  max-width: 1700px;
+  max-width: 1366px;
   margin-top: 150px;
   padding-bottom: 150px;
   background-color: #111111;
+}
+
+.App-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 10px;
+  color: rgb(214, 207, 207);
+  background-color: #050505;
+  border-top: 2px solid rgb(214, 207, 207);
 }

@@ -1,32 +1,20 @@
 import './ItemDetail.css';
-import Item from './Item.js';
-import { useState } from 'react';
+import ItemCounter from './ItemCounter';
 
-const Catalogue = [
 
-    {id: 'movie1', title: 'Star Wars', price: 19, pictureUrl: './img/star-wars.png'},
-    //{id: 'movie2', title: 'Pulp Fiction', price: 14, pictureUrl: './img/pulp-fiction.png'},
-    //{id: 'movie3', title: 'Halloween', price: 17, pictureUrl: './img/halloween.png'},
-    //{id: 'movie4', title: 'Die Hard', price: 9, pictureUrl: './img/die-hard.png'}
-
-];
-
-const ItemDetail = () => {
-    
-    const [itemList, setItemList] = useState([]);
-
-    const data = new Promise( (resolve, reject) => {
-        setTimeout( () => resolve (Catalogue), 2000);
-    });
-    data.then(info => {
-        setItemList(info);
-    });
-
+const ItemDetail = ( {items} ) => {
     return (
-        <div className='ItemContainer'>
-            {itemList.map(items => (
-                <Item key={items.id} items={items}/>
-            ))}
+        <div className='ItemDetail'>
+            <img className='ItemPoster' src={items.pictureUrl} alt='Poster'/>
+            <div className='DetailContainer'>
+                <h1 className='ItemTitle'>{items.title}</h1>
+                <h4 className='ItemGenre'>{items.genre}</h4>
+                <p className='ItemSynopsis'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lacinia ex, eget ullamcorper mi. Sed mi purus, volutpat eget diam id, laoreet aliquam quam. Fusce efficitur sapien sed sem malesuada, et ultricies mi ultricies.</p>
+                <div className='Button'>
+                    <ItemCounter className='ItemCounter' />
+                    <button className='AddCart'>Add to cart</button>
+                </div>
+            </div>
         </div>
     );
 }

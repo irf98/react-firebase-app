@@ -1,5 +1,51 @@
-.ItemContainer {
+.ItemDetail {
+    max-width: 1000px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #222222;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 5px;
+}
+
+.ItemPoster {
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.DetailContainer {
+    margin-left: 30px;
+    color: rgb(214, 207, 207);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.DetailContainer p {
+    max-width: 500px;
+}
+
+.Button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.AddCart {
+    margin: 0 auto;
+    width: 200px;
+    margin: 15px;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
+.AddCart:hover {
+    background-color: #a38a0a;
 }

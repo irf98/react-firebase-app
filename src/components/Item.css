@@ -1,13 +1,18 @@
 .ItemDisplay {
     display: inline-block;
     vertical-align: top;
-    width: 340px;
-    height: 780px;
+    width: 170px;
+    height: 290px;
     padding: 10px;
     margin: 20px;
     background-color: #222222;
     box-shadow: 1px 2px 4px black;
     border-radius: 5px;
+}
+
+.ItemDisplay img {
+    width: 161px;
+    height: 280;
 }
 
 .ItemDisplay h5 {
@@ -19,27 +24,7 @@
 
 .ItemDisplay h4 {
     text-align: right;
-    font-size: large;
+    font-size: medium;
+    margin: 0;
     color: rgb(214, 207, 207);
-}
-
-.ItemDisplay p {
-    height: 110px;
-    text-align: left;
-    color: rgb(214, 207, 207);
-}
-
-.AddCart {
-    width: 200px;
-    margin: 15px;
-    padding: 5px 10px 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #f3ce13;
-    border: #f3ce13;
-    border-radius: 3px;
-}
-
-.AddCart:hover {
-    background-color: #a38a0a;
 }

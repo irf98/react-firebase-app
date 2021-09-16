@@ -3,6 +3,7 @@ import './components/NavBar';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -11,9 +12,12 @@ function App() {
         <NavBar />
       </header>
       <main className='App-main'>
-        {/* <ItemListContainer /> */}
-        <ItemDetailContainer />
+        <ItemListContainer />
+        {/*<ItemDetailContainer />*/}
       </main>
+      <footer className='App-footer'>
+        <Footer />
+      </footer>
     </div>
   );
 }
