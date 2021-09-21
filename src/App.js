@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Wishlist from './components/Wishlist';
 import Footer from './components/Footer';
 
 function App() {
@@ -13,10 +14,19 @@ function App() {
         <header className="App-header">
           <NavBar />
         </header>
-        <main className='App-main'>
-          <ItemListContainer />
-          {/*<ItemDetailContainer />*/}
-        </main>
+        <Switch>
+          <main className='App-main'>
+            <Route exact path='/'>
+              <ItemListContainer />
+            </Route>
+            <Route path='/product/:id'>
+              <ItemDetailContainer />
+            </Route>
+            <Route path='/wishlist'>
+              <Wishlist />
+            </Route>
+          </main>
+        </Switch>
         <footer className='App-footer'>
           <Footer />
         </footer>

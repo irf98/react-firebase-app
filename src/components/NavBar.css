@@ -26,7 +26,7 @@
     width: 800px;
 }
 
-.NavOptionsLeft {
+.NavOptionsLeft, .WishLink {
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -36,6 +36,10 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
+}
+
+.NavLogo {
+    text-decoration: none;
 }
 
 .LogoName {

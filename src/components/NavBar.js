@@ -1,20 +1,23 @@
 import './NavBar.css';
 import CartWidget from './CartWidget.js';
 import { IoSearch, IoStar } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
         <nav className='NavBar'>
-            <div className='NavLogo'>
+            <Link to={`/`} className='NavLogo'>
                 <h1 className='LogoName'>Movies Store</h1>
-            </div>
+            </Link>
             <div className='LeftNav'>
                 <div className='NavOptionsLeft'>
                     <form className='NavSearch'>
                         <input className='NavSearchInput' type='search' placeholder='Search...' />
                         <button className='SearchButton' type='submit' title='Search'><IoSearch /></button>
-                        <button className='Wishlist' title='Wishlist'><IoStar /></button>
                     </form>
+                    <Link to={`/wishlist`} className='WishLink'>
+                        <button className='Wishlist' title='Wishlist'><IoStar /></button>
+                    </Link>
                 </div>
             </div>
             <div className='RightNav'>

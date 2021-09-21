@@ -13,6 +13,8 @@
     margin: 0;
     display: flex;
     justify-content: flex-start;
+    height: 480px;
+    width: 323px;
 }
 
 .DetailContainer {
@@ -32,12 +34,12 @@
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    height: 30px;
 }
 
 .AddCart {
     margin: 0 auto;
     width: 200px;
-    margin: 15px;
     padding: 5px 10px 5px 10px;
     font-weight: bold;
     cursor: pointer;
