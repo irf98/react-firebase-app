@@ -2,19 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    width: 200px;
+    margin-top: auto;
     height: 30px;
+    width: 500px;
 }
 
 .ItemCounter h4 {
     margin: 0;
-    width: 340px;
+    width: 140px;
     text-align: center;
 }
 
+.CounterButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
 .Counter {
-    margin: 0px;
     width: 30px;
     height: 30px;
     padding: 10px;
@@ -29,4 +35,19 @@
 
 .Counter:hover {
     background-color: #b90e0e;
+}
+
+.AddCart {
+    width: 200px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
+.AddCart:hover {
+    background-color: #a38a0a;
 }

@@ -11,6 +11,7 @@
 
 .ItemPoster {
     margin: 0;
+    margin-left: 50px;
     display: flex;
     justify-content: flex-start;
     height: 480px;
@@ -18,7 +19,7 @@
 }
 
 .DetailContainer {
-    margin-left: 30px;
+    margin-left: 60px;
     color: rgb(214, 207, 207);
     text-align: left;
     display: flex;
@@ -28,26 +29,4 @@
 
 .DetailContainer p {
     max-width: 500px;
-}
-
-.Button {
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto;
-    height: 30px;
-}
-
-.AddCart {
-    margin: 0 auto;
-    width: 200px;
-    padding: 5px 10px 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #f3ce13;
-    border: #f3ce13;
-    border-radius: 3px;
-}
-
-.AddCart:hover {
-    background-color: #a38a0a;
 }

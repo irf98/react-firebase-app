@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
+import Wishlist from './components/Wishlist';
+import Cart from './components/Cart';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import Wishlist from './components/Wishlist';
 import Footer from './components/Footer';
 
 function App() {
@@ -16,14 +17,17 @@ function App() {
         </header>
         <Switch>
           <main className='App-main'>
+            <Route path='/wishlist'>
+              <Wishlist />
+            </Route>
+            <Route path='/cart'>
+              <Cart />
+            </Route>
             <Route exact path='/'>
               <ItemListContainer />
             </Route>
             <Route path='/product/:id'>
               <ItemDetailContainer />
-            </Route>
-            <Route path='/wishlist'>
-              <Wishlist />
             </Route>
           </main>
         </Switch>
