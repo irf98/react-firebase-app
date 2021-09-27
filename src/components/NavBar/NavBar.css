@@ -51,13 +51,26 @@
     color: rgb(214, 207, 207);
 }
 
+.CategoriesButton {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 10px 5px 10px;
+    height: 30px;
+    width: 90px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
 .NavSearch {
     display: flex;
     align-items: center;
 }
 
 .NavSearchInput {
-    width: 700px;
+    width: 600px;
     height: 30px;
     border-radius: 3px;
     background-color: rgb(236, 228, 228);
@@ -74,7 +87,12 @@
     border-radius: 3px;
 }
 
-.SearchButton:hover {
+.SearchButton svg, .Wishlist svg {
+    width: 15px;
+    height: 15px;
+}
+
+.SearchButton:hover, .CategoriesButton:hover {
     background-color: #a38a0a;
 }
 

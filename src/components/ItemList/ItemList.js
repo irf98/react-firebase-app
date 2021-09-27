@@ -1,6 +1,6 @@
-import ItemDetail from './ItemDetail.js';
-import { useState } from 'react';
-import { useParams } from 'react-router';
+import './ItemList.css';
+import Item from '../Item/Item';
+import { useState, useEffect } from 'react';
 
 const loadItems = () => {
     return new Promise( (resolve, reject) => {
@@ -16,21 +16,25 @@ const loadItems = () => {
     });
 }
 
-const ItemDetailContainer = () => {
-    const { id } = useParams();
-    const [ itemDetail, setItemDetail ] = useState();
+const ItemList = () => {
+    const [ itemList, setItemList] = useState([]);
 
-    const getItemDetail = loadItems();
-    getItemDetail.then( result => {
-        const itemDetail = result.find( data => data.id === id );
-        setItemDetail(itemDetail);
-    });
+    useEffect( () => {
+        const getLoadedItems = loadItems();
+        getLoadedItems.then( info => { setItemList(info) } );
+    }, [] );
     
+    if ( itemList.length === 0 ) {
+        return <h2 style={ {color: 'rgb(214, 207, 207)'} }>Loading...</h2>
+    }
+
     return (
-        <>
-            { itemDetail ? <ItemDetail items={ itemDetail } /> : <h2 style={ {color: 'rgb(214, 207, 207)'} }>Loading...</h2> }
-        </>
+        <div className='ItemContainer'>
+            { itemList.map( item => (
+                <Item key={item.id} item={item}/>
+            ))}
+        </div>
     );
 }
 
-export default ItemDetailContainer;
+export default ItemList;

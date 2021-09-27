@@ -1,16 +1,16 @@
 import './ItemDetail.css';
-import ItemCounter from './ItemCounter';
+import ItemCounter from '../ItemCounter/ItemCounter';
 
-const ItemDetail = ( {items} ) => {
+const ItemDetail = ( {item} ) => {
 
     return (
-        <div className='ItemDetail' key={items.id}>
-            <img className='ItemPoster' src={`../../${items.pictureUrl}`} title={items.title} alt='Poster' />
+        <div className='ItemDetail' key={item.id}>
+            <img className='ItemPoster' src={`../../${item.pictureUrl}`} title={item.title} alt='Poster' />
             <div className='DetailContainer'>
-                <h1 className='ItemTitle'>{items.title}</h1>
-                <h4 className='ItemGenre'>{items.genre}</h4>
+                <h1 className='ItemTitle'>{item.title}</h1>
+                <h4 className='ItemGenre'>{item.genre}</h4>
                 <p className='ItemSynopsis'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lacinia ex, eget ullamcorper mi. Sed mi purus, volutpat eget diam id, laoreet aliquam quam. Fusce efficitur sapien sed sem malesuada, et ultricies mi ultricies.</p>
-                <ItemCounter stock={items.stock} />
+                <ItemCounter item={item} />
             </div>
         </div>
     );

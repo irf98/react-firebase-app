@@ -9,7 +9,7 @@ const LoadCart = () => {
 }
 
 const Cart = () => {
-    const [ shopCart, setShopCart] = useState([]);
+    const [ shopCart, setShopCart ] = useState([]);
 
     useEffect( () => {
         const getCart = LoadCart();

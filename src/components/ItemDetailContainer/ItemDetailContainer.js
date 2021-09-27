@@ -1,6 +1,6 @@
-import './ItemList.css';
-import Item from './Item.js';
-import { useState, useEffect } from 'react';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import { useState } from 'react';
+import { useParams } from 'react-router';
 
 const loadItems = () => {
     return new Promise( (resolve, reject) => {
@@ -16,25 +16,21 @@ const loadItems = () => {
     });
 }
 
-const ItemList = () => {
-    const [ itemList, setItemList] = useState([]);
+const ItemDetailContainer = () => {
+    const { id } = useParams();
+    const [ itemDetail, setItemDetail ] = useState();
 
-    useEffect( () => {
-        const getLoadedItems = loadItems();
-        getLoadedItems.then( info => { setItemList(info) } );
-    }, [] );
+    const getItemDetail = loadItems();
+    getItemDetail.then( result => {
+        const itemDetail = result.find( data => data.id === id );
+        setItemDetail(itemDetail);
+    });
     
-    if ( itemList.length === 0 ) {
-        return <h2 style={ {color: 'rgb(214, 207, 207)'} }>Loading...</h2>
-    }
-
     return (
-        <div className='ItemContainer'>
-            { itemList.map( items => (
-                <Item key={items.id} items={items}/>
-            ))}
-        </div>
+        <>
+            { itemDetail ? <ItemDetail item={ itemDetail } /> : <h2 style={ {color: 'rgb(214, 207, 207)'} }>Loading...</h2> }
+        </>
     );
 }
 
-export default ItemList;
+export default ItemDetailContainer;

@@ -1,5 +1,5 @@
 import './NavBar.css';
-import CartWidget from './CartWidget.js';
+import CartWidget from '../CartWidget/CartWidget';
 import { IoSearch, IoStar } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
@@ -11,8 +11,9 @@ const NavBar = () => {
             </Link>
             <div className='LeftNav'>
                 <div className='NavOptionsLeft'>
+                    <button className='CategoriesButton'>Categories</button>    
                     <form className='NavSearch'>
-                        <input className='NavSearchInput' type='search' placeholder='Search...' />
+                        <input className='NavSearchInput' type='search' placeholder=' search a movie by title...' />
                         <button className='SearchButton' type='submit' title='Search'><IoSearch /></button>
                     </form>
                     <Link to={`/wishlist`} className='WishLink'>
