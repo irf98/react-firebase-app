@@ -26,6 +26,7 @@ export const CartContextProvider = ( {children} ) => {
         const updatedItem = {
             ...updatedCart[itemInCart]
         }
+        updatedItem.quantity--;
         if ( updatedItem !== -1 ) {
             updatedCart.splice( itemInCart, 1 );
         } else {
@@ -56,6 +57,24 @@ export default Context;
 /*
 
 const onRemoveItem = ( itemId ) => {
+    const updatedCart = [...cart];
+    const itemInCart = updatedCart.find(
+        item => item.id === itemId
+    );
+    const updatedItem = {
+        ...updatedCart[itemInCart]
+    }
+    updatedItem.quantity--;
+    if ( updatedItem.quantity <= 0 ) {
+        updatedCart.splice( itemInCart, 1 );
+    } else {
+        updatedCart[itemInCart] = updatedItem;
+    }
+    setCart(updatedCart);
+    console.log(updatedCart);
+}
+
+ const onRemoveItem = ( itemId ) => {
         const updatedCart = [...cart];
         const itemInCart = updatedCart.find(
             item => item.id === itemId
@@ -64,7 +83,7 @@ const onRemoveItem = ( itemId ) => {
             ...updatedCart[itemInCart]
         }
         updatedItem.quantity--;
-        if ( updatedItem.quantity <= 0 ) {
+        if ( updatedItem !== -1 ) {
             updatedCart.splice( itemInCart, 1 );
         } else {
             updatedCart[itemInCart] = updatedItem;

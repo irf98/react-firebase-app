@@ -23,7 +23,7 @@ const Cart = () => {
         return <h2 className='LoadingMessage'>Loading...</h2>
     }
 
-    if ( Number(cart) === 0 ) {
+    if ( cart.length === 0 ) {
         return (
             <>
                 <h2 className='EmptyCartMessage'>Your Cart it's currently empty.</h2>
@@ -42,8 +42,8 @@ const Cart = () => {
             </div>
             <div className='CartContainer'>
                 { cart.map( item => (
-                    <div className='CartDisplay'>
-                        <div className='ItemSelected' key={item.id}>
+                    <div className='CartDisplay' key={item.id}>
+                        <div className='ItemSelected'>
                             <button className='RemoveButton' onClick={ () => onRemoveItem(item) }>Remove</button>
                             <img className='ItemCartImg' src={`../../${item.pictureUrl}`} title={item.title} alt='Poster'/>
                             <span className='ItemTitle'>{item.title}</span>
