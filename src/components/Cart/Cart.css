@@ -1,0 +1,154 @@
+.LoadingMessage, .EmptyCartMessage {
+    color: rgb(214, 207, 207);
+}
+
+.CartHeader {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    margin: auto;
+    margin-top: 40px;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+
+.Movie {
+    width: 50%;
+    display: flex;
+    padding-left: 40px;
+    color: rgb(214, 207, 207);
+}
+
+.Price {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    color: rgb(214, 207, 207);
+}
+
+.Quantity {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    color: rgb(214, 207, 207);
+}
+
+.Total {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    color: rgb(214, 207, 207);
+}
+
+.CartContainer {
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #222222;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px black;
+    border: 2px solid  black
+}
+
+.CartDisplay {
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(214, 207, 207);
+}
+
+.ItemSelected {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RemoveButton {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(214, 207, 207);
+    border-color: #f31313;
+    background-color: #f31313;
+}
+
+.RemoveButton:hover, .EmptyCartButton:hover {
+    border-radius: 5px;
+    border-color: #b90e0e;
+    background-color: #b90e0e;
+}
+
+.ItemCartImg {
+    height: 120px;
+    width: 75px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ItemSelected span {
+    width: 150px;
+    text-align: center;
+}
+
+.CartOptions {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    color: rgb(214, 207, 207);
+}
+
+.TotalPrice {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #222222;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(214, 207, 207);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.EmptyCartButton {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 21px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(214, 207, 207);
+    border-color: #f31313;
+    background-color: #f31313;
+}
+
+.CheckoutButton, .BackButton {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 21px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    border-color: #f3ce13;
+    background-color: #f3ce13;
+}
+
+.CheckoutButton:hover, .BackButton:hover {
+    background-color: #a38a0a;
+    border-color: #a38a0a;
+}
