@@ -18,22 +18,16 @@ export const CartContextProvider = ( {children} ) => {
         setCart(updatedCart);
     }
     
-    const onRemoveItem = ( itemId ) => {
-        const updatedCart = [...cart];
-        const itemInCart = updatedCart.find(
-            item => item.id === itemId
-        );
-        const updatedItem = {
-            ...updatedCart[itemInCart]
-        }
-        updatedItem.quantity--;
-        if ( updatedItem !== -1 ) {
-            updatedCart.splice( itemInCart, 1 );
+    const onRemoveItem = ( product ) => {
+        const target = cart.find( (item) => item.id === product.id );
+        if ( target.quantity === 1 ) {
+            setCart(cart.filter( (item) => item.id !== product.id) );
         } else {
-            updatedCart[itemInCart] = updatedItem;
+            setCart(
+                cart.map( (item) =>
+                item.id === product.id ? { ...target, quantity: target.quantity - 1 } : item )
+            );
         }
-        setCart(updatedCart);
-        console.log(updatedCart);
     }
 
     const onClearCart = () => {

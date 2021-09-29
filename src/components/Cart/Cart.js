@@ -29,7 +29,7 @@ const Cart = () => {
                 <h2 className='EmptyCartMessage'>Your Cart it's currently empty.</h2>
                 <Link to={`/`}><button className='BackButton'>Back to the Catalogue</button></Link>
             </>
-        ) 
+        );
     }
 
     return (
