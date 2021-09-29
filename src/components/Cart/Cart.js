@@ -11,7 +11,7 @@ const LoadCart = () => {
 }
 
 const Cart = () => {
-    const { cart, onRemoveItem, onClearCart } = useContext(CartContext);
+    const { cart, onRemoveItem, onClearCart, onCalculateTotal } = useContext(CartContext);
     const [ shopCart, setShopCart ] = useState([]);
 
     useEffect( () => {
@@ -31,7 +31,7 @@ const Cart = () => {
             </>
         ) 
     }
-    
+
     return (
         <>
             <div className='CartHeader'>
@@ -55,7 +55,7 @@ const Cart = () => {
                 ))}
             </div>
             <div className='CartOptions'>
-                <h4 className='TotalPrice'>Cart total: $$$</h4>
+                <h4 className='TotalPrice'>Cart total: ${ onCalculateTotal }</h4>
                 <button className='EmptyCartButton' onClick={ () => onClearCart() }>Empty cart</button>
                 <button className='CheckoutButton'>Proceed to checkout</button>
             </div>
