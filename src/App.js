@@ -17,22 +17,25 @@ function App() {
           <header className="App-header">
             <NavBar />
           </header>
-          <Switch>
             <main className='App-main'>
-              <Route path='/wishlist'>
-                <Wishlist />
-              </Route>
-              <Route path='/cart'>
-                <Cart />
-              </Route>
-              <Route exact path='/'>
-                <ItemListContainer />
-              </Route>
-              <Route path='/product/:id'>
-                <ItemDetailContainer />
-              </Route>
+              <Switch>
+                <Route path='/wishlist'>
+                  <Wishlist />
+                </Route>
+                <Route path='/cart'>
+                  <Cart />
+                </Route>
+                <Route exact path='/'>
+                  <ItemListContainer />
+                </Route>
+                <Route path='/categories/:genre'>
+                  <ItemListContainer />
+                </Route>
+                <Route path='/product/:id'>
+                  <ItemDetailContainer />
+                </Route>
+              </Switch>
             </main>
-          </Switch>
           <footer className='App-footer'>
             <Footer />
           </footer>

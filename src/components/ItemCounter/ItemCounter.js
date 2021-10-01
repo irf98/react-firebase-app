@@ -16,9 +16,7 @@ const ItemCounter = ( {item} ) => {
                 <h4>{ count }</h4>
                 <button className='Counter' onClick={ () => count < stockAvailable ? setCount (count + 1) : setCount (count) }>+</button>
             </div>
-            <Link to={`/cart`}>
-                <button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button>
-            </Link>
+            <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
         </div>
     );
 }

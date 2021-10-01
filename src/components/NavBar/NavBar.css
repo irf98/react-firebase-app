@@ -51,6 +51,14 @@
     color: rgb(214, 207, 207);
 }
 
+.DropdownMenu {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+
 .CategoriesButton {
     margin-left: 10px;
     margin-right: 10px;
@@ -62,6 +70,43 @@
     background-color: #f3ce13;
     border: #f3ce13;
     border-radius: 3px;
+}
+
+.DropCategories {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 90px;
+    left: 0;
+    top: calc( 100% + .25rem );
+    background-color: #222222;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.DropItem {
+    width: 90px;
+    margin: 10px 0 10px 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(236, 228, 228);
+}
+
+.DropItem:hover {
+    color: #f3ce13;
+}
+
+.DropdownMenu > .CategoriesButton:focus + .DropCategories {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .NavSearch {
