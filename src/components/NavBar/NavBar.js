@@ -22,7 +22,7 @@ const NavBar = () => {
                         <button className='CategoriesButton'>Categories</button>
                         <div className='DropCategories'>
                             { Catalogue.map( item =>
-                                <Link to={`/categories/${item.genre}`} className='DropItem' key={item.id}>{item.genre}</Link>
+                                <Link to={`/categories/${item.genre.replace(' ', '-').toLowerCase()}`} className='DropItem' key={item.id}>{item.genre}</Link>
                             )}
                         </div>
                     </div>
