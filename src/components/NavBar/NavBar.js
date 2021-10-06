@@ -36,7 +36,7 @@ const NavBar = () => {
                         </div>
                     </div>
                     <form className='NavSearch'>
-                        <input className='NavSearchInput' type='search' placeholder=' search a movie by title...' />
+                        <input className='NavSearchInput' type='search' placeholder=' search a movie by title...'/>
                         <button className='SearchButton' type='submit' title='Search'><IoSearch /></button>
                     </form>
                     <Link to={`/wishlist`} className='WishLink'>
