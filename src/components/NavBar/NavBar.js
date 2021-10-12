@@ -1,7 +1,6 @@
 import './NavBar.css';
 import { useState, useEffect } from 'react';
-import { db } from '../../services/firebase/firebase';
-import { collection, getDocs } from '@firebase/firestore';
+import { getProducts } from '../../services/firebase/firebase';
 import { Link } from 'react-router-dom';
 import { IoSearch, IoStar } from "react-icons/io5";
 import CartWidget from '../CartWidget/CartWidget';
@@ -10,15 +9,13 @@ const NavBar = () => {
     const [ products, setProducts ] = useState([]);
 
     useEffect( () => {
-        getDocs( collection( db, 'items' )).then( (querySnapshot) => {
-            const products = querySnapshot.docs.map( doc => {
-                return { id: doc.id, ...doc.data() }
-            });
+        getProducts().then( products => {
             setProducts(products);
         }).catch( (error) => {
             console.log(error);
-        }).finally( () => {
-            console.log('Categories loaded');
+        });
+        return ( () => {
+            setProducts([]);
         });
     }, [] );
 

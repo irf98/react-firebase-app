@@ -1,8 +1,7 @@
 import ItemList from '../ItemList/ItemList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { db } from '../../services/firebase/firebase';
-import { collection, getDocs, query, where } from '@firebase/firestore';
+import { getProducts } from '../../services/firebase/firebase';
 
 const ItemListContainer = () => {
     const { categories } = useParams();
@@ -10,33 +9,18 @@ const ItemListContainer = () => {
     const [ loading, setLoading ] = useState(true);
 
     useEffect( () => {
-        if ( !categories ) {
+        setLoading(true);
+        getProducts( 'genre', '==', categories ).then( products => {
+            setProducts(products);
+        }).catch( (error) => {
+            console.log(error);
+        }).finally( () => {
+            setLoading(false);
+        });
+        return ( () => {
             setLoading(true);
-            getDocs( collection( db, 'items' )).then( (querySnapshot) => {
-                const products = querySnapshot.docs.map( doc => {
-                    return { id: doc.id, ...doc.data() }
-                });
-                setProducts(products);
-                console.log(products);
-            }).catch( (error) => {
-                console.log(error);
-            }).finally( () => {
-                setLoading(false);
-            });
-        } else {
-            setLoading(true);
-            getDocs( query( collection( db, 'items' ), where( 'genre', '==', categories ))).then( (querySnapshot) => {
-                const products = querySnapshot.docs.map( doc => {
-                    return { id: doc.id, ...doc.data() }
-                });
-                setProducts(products);
-                console.log(products);
-            }).catch( (error) => {
-                console.log(error);
-            }).finally( () => {
-                setLoading(false);
-            });
-        }
+            setProducts([]);
+        });
     }, [categories] );
 
     return (

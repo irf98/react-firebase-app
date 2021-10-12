@@ -1,8 +1,7 @@
 import './Cart.css';
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { collection, addDoc, getDoc, doc, Timestamp, writeBatch } from 'firebase/firestore';
-import { db } from '../../services/firebase/firebase';
+import { createOrder } from '../../services/firebase/firebase';
 import CartContext from '../../context/CartContext';
 
 const Cart = () => {
@@ -23,43 +22,19 @@ const Cart = () => {
     }, [onCalculateTotal] );
 
     const confirmOrder = () => {
-
         const objOrder = {
             buyer: user,
             items: cart,
-            total: total,
-            date: Timestamp.fromDate( new Date() )
+            total: total
         }
-
-        console.log(objOrder);
-
-        const batch = writeBatch(db);
-        const outOfStock = [];
-
-        objOrder.items.forEach( (item, i) => {
-            getDoc( doc( db, 'items', item.id ) ).then( DocumentSnapshot => {
-                if ( DocumentSnapshot.data().stock >= objOrder.items[i].quantity ) {
-                    batch.update( doc( db, 'items', DocumentSnapshot.id ), {
-                        stock: DocumentSnapshot.data().stock - objOrder.items[i].quantity
-                    });
-                } else {
-                    outOfStock.push( {...DocumentSnapshot.data(), id: DocumentSnapshot.id} );
-                }
-            });
+        createOrder(objOrder).then( () => {
+            console.log('Success');
+        }).catch( error => {
+            console.log(error);
+        }).finally( () => {
+            onClearCart();
+            setTotal(0);
         });
-
-        if ( outOfStock.length === 0 ) {
-            addDoc( collection( db, 'orders'), objOrder ).then( () => {
-                batch.commit().then( () => {
-                    console.log('Order successful');
-                });
-            }).catch( (error) => {
-                console.log(error);
-            }).finally( () => {
-                onClearCart();
-                setTotal(0);
-            });
-        }
     }
 
     if ( cart.length === 0 ) {
