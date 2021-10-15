@@ -7,11 +7,10 @@ import CartContext from '../../context/CartContext';
 
 const Cart = () => {
     const { cart, onRemoveItem, onClearCart, onCalculateTotal } = useContext(CartContext);
+    const { user, currentUser, setInfo } = useAuth();
     const [ total, setTotal ] = useState();
-    const { user, setInfo } = useAuth();
+    const [ visible, setVisible ] = useState(false);
     
-    console.log(user);
-
     useEffect( () => {
         setTotal(onCalculateTotal)
     }, [onCalculateTotal] );
@@ -32,6 +31,11 @@ const Cart = () => {
             onClearCart();
             setTotal(0);
         });
+    }
+
+    const cancelOrder = () => {
+        setVisible(!visible);
+        onClearCart();
     }
 
     if ( cart.length === 0 ) {
@@ -68,19 +72,31 @@ const Cart = () => {
             <div className='CartOptions'>
                 <h4 className='TotalPrice'>Cart total: ${total}</h4>
                 <button className='EmptyCartButton' onClick={ () => onClearCart() }>Empty cart</button>
-                <button className='CheckoutButton'>Proceed to checkout</button>
+                <button className='CheckoutButton' onClick={ () => setVisible(!visible) }>Proceed to checkout</button>
             </div>
-            <div className='CartConfirm'>
-                { Object.values(user).every( x => x === null || x === '' ) ?
-                <form className='SubmitOrder' onSubmit={ confirmOrder }>
-                    <input className='BuyerInput' type='text' placeholder='First name' value={user.firstname} onChange={ setInfo('firstname') }/>
-                    <input className='BuyerInput' type='text' placeholder='Last name' value={user.surname} onChange={ setInfo('surname') }/>
-                    <input className='BuyerInput' type='email' placeholder='Email' value={user.email} onChange={ setInfo('email') }/>
-                    <input className='BuyerInput' type='tel' placeholder='Phone' value={user.phone} onChange={ setInfo('phone') }/>
-                    <button className='ConfirmBuy'>Buy Now</button>
-                </form>
-                : <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button> }
-            </div>
+            { visible &&
+                <div className='CartConfirm'>
+                    { !currentUser ?
+                        <form className='OrderForm'>
+                            <h3 className='FormInfo'>Continue your purchase without an account or Sign In.</h3>
+                            <input className='BuyerInput' type='text' placeholder='First name' value={user.firstname} required onChange={ setInfo('firstname') }/>
+                            <input className='BuyerInput' type='text' placeholder='Last name' value={user.surname} required onChange={ setInfo('surname') }/>
+                            <input className='BuyerInput' type='email' placeholder='Email' value={user.email} required onChange={ setInfo('email') }/>
+                            <input className='BuyerInput' type='tel' placeholder='Phone' value={user.phone} required onChange={ setInfo('phone') }/>
+                            <div className='FormButtons'>
+                                <button className='CancelBuy' onClick={ () => cancelOrder() }>Cancel</button>
+                                <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button>
+                            </div>    
+                            <Link to={`/signin`} className='SignOption'>Sign In</Link>
+                        </form>
+                        :
+                        <div className='FormButtons'>
+                            <button className='CancelBuy' onClick={ () => cancelOrder() }>Cancel</button>
+                            <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button>
+                        </div> 
+                    }
+                </div>
+            }
         </>
     );
 }

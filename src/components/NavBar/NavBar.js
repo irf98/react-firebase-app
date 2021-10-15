@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../../services/firebase/firebase';
 import { Link } from 'react-router-dom';
 import { IoSearch, IoStar } from "react-icons/io5";
+import { useAuth } from '../../context/UserContext';
 import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
     const [ products, setProducts ] = useState([]);
+    const { currentUser, signOut } = useAuth();
 
     useEffect( () => {
         getProducts().then( products => {
@@ -18,6 +20,16 @@ const NavBar = () => {
             setProducts([]);
         });
     }, [] );
+
+    const handleSignOut = () => {
+        return new Promise( (resolve, reject) => {
+            signOut().then( () => {
+                resolve('Success')
+            }).catch( (error) => {
+                reject(error);
+            });
+        });
+    }
 
     return (
         <nav className='NavBar'>
@@ -42,11 +54,18 @@ const NavBar = () => {
                 </div>
             </div>
             <div className='RightNav'>
-                <div className='NavOptionsRight'>
-                    <Link to={`/signin`}><button className='Option'>Sign In</button></Link>
-                    <Link to={`/signup`}><button className='Option'>Sign Up</button></Link>
-                    <CartWidget />
-                </div>
+                { !currentUser ?
+                    <div className='NavOptionsRight'>
+                        <Link to={`/signin`}><button className='Option'>Sign In</button></Link>
+                        <Link to={`/signup`}><button className='Option'>Sign Up</button></Link>
+                        <CartWidget />
+                    </div>
+                    :
+                    <div className='NavOptionsRight'>
+                        <Link to={`/signin`}><button className='SignOut' onClick={ () => handleSignOut() }>Sign Out</button></Link>
+                        <CartWidget />
+                    </div> 
+                }
             </div>
         </nav>
     );
