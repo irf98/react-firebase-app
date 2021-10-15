@@ -43,8 +43,8 @@ const NavBar = () => {
             </div>
             <div className='RightNav'>
                 <div className='NavOptionsRight'>
-                    <button className='Option'>Sign In</button>
-                    <button className='Option'>Sign Up</button>
+                    <Link to={`/signin`}><button className='Option'>Sign In</button></Link>
+                    <Link to={`/signup`}><button className='Option'>Sign Up</button></Link>
                     <CartWidget />
                 </div>
             </div>

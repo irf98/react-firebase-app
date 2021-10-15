@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { collection, getDocs, query, where, doc, getDoc, writeBatch, addDoc, Timestamp } from '@firebase/firestore';
+import { getAuth } from '@firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC0oICYq48CDr69YDjmrCjWR-DoKb5YwaA",
@@ -13,11 +14,9 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 
-export const getFirebase = () => {
-    return app;
-}
-
+export const getFirebase = () => { return app }
 export const db = getFirestore(app);
+export const auth = getAuth();
 
 export const getProducts = ( key, operator, value ) => {
     return new Promise( (resolve, reject) => {

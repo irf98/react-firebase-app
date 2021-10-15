@@ -2,26 +2,23 @@ import './Cart.css';
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { createOrder } from '../../services/firebase/firebase';
+import { useAuth } from '../../context/UserContext';
 import CartContext from '../../context/CartContext';
 
 const Cart = () => {
     const { cart, onRemoveItem, onClearCart, onCalculateTotal } = useContext(CartContext);
     const [ total, setTotal ] = useState();
-    const [ user, setUser ] = useState({
-        firstname: '', surname: '', email: '', phone: ''
-    });
-
-    const setInfo = (x) => {
-        return ( {target: {value}} ) => {
-            setUser( info => ( {...info, [x]: value} ));
-        }
-    }
+    const { user, setInfo } = useAuth();
     
+    console.log(user);
+
     useEffect( () => {
         setTotal(onCalculateTotal)
     }, [onCalculateTotal] );
 
-    const confirmOrder = () => {
+    const confirmOrder = (e) => {
+        e.preventDefault();
+
         const objOrder = {
             buyer: user,
             items: cart,
@@ -74,13 +71,15 @@ const Cart = () => {
                 <button className='CheckoutButton'>Proceed to checkout</button>
             </div>
             <div className='CartConfirm'>
-                <form className='SubmitOrder'>
+                { Object.values(user).every( x => x === null || x === '' ) ?
+                <form className='SubmitOrder' onSubmit={ confirmOrder }>
                     <input className='BuyerInput' type='text' placeholder='First name' value={user.firstname} onChange={ setInfo('firstname') }/>
                     <input className='BuyerInput' type='text' placeholder='Last name' value={user.surname} onChange={ setInfo('surname') }/>
                     <input className='BuyerInput' type='email' placeholder='Email' value={user.email} onChange={ setInfo('email') }/>
                     <input className='BuyerInput' type='tel' placeholder='Phone' value={user.phone} onChange={ setInfo('phone') }/>
+                    <button className='ConfirmBuy'>Buy Now</button>
                 </form>
-                <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button>
+                : <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button> }
             </div>
         </>
     );

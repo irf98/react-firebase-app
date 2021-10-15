@@ -2,46 +2,57 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext';
+import { UserContextProvider } from './context/UserContext';
 import NavBar from './components/NavBar/NavBar';
 import Wishlist from './components/Wishlist/Wishlist';
 import Cart from './components/Cart/Cart';
+import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <BrowserRouter>
-      <CartContextProvider>
-        <div className="App">
-          <header className="App-header">
-            <NavBar />
-          </header>
-            <main className='App-main'>
-              <Switch>
-                <Route path='/wishlist'>
-                  <Wishlist />
-                </Route>
-                <Route path='/cart'>
-                  <Cart />
-                </Route>
-                <Route exact path='/'>
-                  <ItemListContainer />
-                </Route>
-                <Route path='/categories/:categories'>
-                  <ItemListContainer />
-                </Route>
-                <Route path='/product/:id'>
-                  <ItemDetailContainer />
-                </Route>
-              </Switch>
-            </main>
-          <footer className='App-footer'>
-            <Footer />
-          </footer>
-        </div>
-      </CartContextProvider>
-    </BrowserRouter>  
+    <UserContextProvider>
+      <BrowserRouter>
+        <CartContextProvider>
+          <div className="App">
+            <header className="App-header">
+              <NavBar />
+            </header>
+              <main className='App-main'>
+                <Switch>
+                  <Route path='/signup'>
+                    <SignUp />
+                  </Route>
+                  <Route path='/signin'>
+                    <SignIn />
+                  </Route>
+                  <Route path='/wishlist'>
+                    <Wishlist />
+                  </Route>
+                  <Route path='/cart'>
+                    <Cart />
+                  </Route>
+                  <Route exact path='/'>
+                    <ItemListContainer />
+                  </Route>
+                  <Route path='/categories/:categories'>
+                    <ItemListContainer />
+                  </Route>
+                  <Route path='/product/:id'>
+                    <ItemDetailContainer />
+                  </Route>
+                </Switch>
+              </main>
+            <footer className='App-footer'>
+              <Footer />
+            </footer>
+          </div>
+        </CartContextProvider>
+      </BrowserRouter>
+    </UserContextProvider>
   );
 }
 
