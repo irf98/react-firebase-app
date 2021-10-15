@@ -1,4 +1,4 @@
-.SignUp {
+.AccountRecovery {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -12,14 +12,20 @@
     text-decoration: none;
 }
 
-.SignForm {
+.AccountRecovery h3 {
+    padding: 5px 0 5px 0;
+    margin: 5px 0 10px 0;
+    color:rgb(214, 207, 207);
+}
+
+.RecoveryForm {
     display: flex;
     flex-direction: column;
     width: 75%;
     margin: 0 auto;
 }
 
-.SignInput {
+.RecoveryInput {
     margin: 10px;
     padding: 10px;
     background-color: #555555;
@@ -28,21 +34,7 @@
     color: rgb(214, 207, 207);
 }
 
-.TermsAndConditions {
-    display: flex;
-    justify-content: space-between;
-    width: 75%;
-    margin: 0 auto;
-    padding: 10px 0 10px 0;
-    font-size: small;
-}
-
-.CheckBox {
-    padding: 0;
-    margin: 0;
-}
-
-.ConfirmUser {
+.ConfirmSend {
     width: 150px;
     margin: 10px auto;
     padding: 10px;
@@ -53,29 +45,15 @@
     border-radius: 3px;
 }
 
-.ConfirmUser:hover {
-    background-color: #a38a0a;
-    border-color: #a38a0a;
-}
-
-.SignUp h3 {
-    width: 75%;
-    color: rgb(214, 207, 207);
-    margin: 0 auto;
-    padding: 20px 0 10px 0;
-
-}
-
-.SignUp h5 {
-    color: rgb(214, 207, 207);
-    margin: 10px 0 10px 0;
+.AccountRecovery a {
+    margin: 5px auto 10px;
     padding: 0;
-}
-
-.SignUp a {
-    margin: 0 auto;
-    padding: 0 0 20px 0;
     width: 70px;
     color: rgb(214, 207, 207);
     border-color: #222222;
+}
+
+.ConfirmSend:hover {
+    background-color: #a38a0a;
+    border-color: #a38a0a;
 }

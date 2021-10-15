@@ -8,6 +8,7 @@ import Wishlist from './components/Wishlist/Wishlist';
 import Cart from './components/Cart/Cart';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
+import AccountRecovery from './components/AccountRecovery/AccountRecovery';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Footer from './components/Footer/Footer';
@@ -28,6 +29,9 @@ function App() {
                   </Route>
                   <Route path='/signin'>
                     <SignIn />
+                  </Route>
+                  <Route path='/accountrecovery'>
+                    <AccountRecovery />
                   </Route>
                   <Route path='/wishlist'>
                     <Wishlist />

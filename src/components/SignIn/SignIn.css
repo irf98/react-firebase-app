@@ -1,0 +1,64 @@
+.SignIn {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+    background-color: #222222;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(214, 207, 207);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.ForgotMessage {
+    margin: 0 auto;
+    padding: 0;
+    color: rgb(214, 207, 207);
+    width: 120px;
+    font-size: smaller;
+}
+
+.SignIn h5 {
+    padding: 5px 0 5px 0;
+    margin: 5px 0 10px 0;
+    color:rgb(214, 207, 207);
+}
+
+.RedirectLink {
+    margin: 0 auto;
+    padding: 0;
+    color: rgb(214, 207, 207);
+    width: 60px;
+    font-size: smaller;
+}
+
+.RecoveryLinks {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.RecoveryLinks span {
+    font-size: smaller;
+    margin: 0 8px 0 6px;
+}
+
+.ConfirmLogin {
+    width: 150px;
+    margin: 10px auto;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
+.ConfirmLogin:hover {
+    background-color: #a38a0a;
+    border-color: #a38a0a;
+}

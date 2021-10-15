@@ -56,8 +56,8 @@ const NavBar = () => {
             <div className='RightNav'>
                 { !currentUser ?
                     <div className='NavOptionsRight'>
-                        <Link to={`/signin`}><button className='Option'>Sign In</button></Link>
-                        <Link to={`/signup`}><button className='Option'>Sign Up</button></Link>
+                        <Link className='SignLink' to={`/signin`}><button className='Option'>Sign In</button></Link>
+                        <Link className='SignLink' to={`/signup`}><button className='Option'>Sign Up</button></Link>
                         <CartWidget />
                     </div>
                     :

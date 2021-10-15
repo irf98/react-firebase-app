@@ -164,6 +164,13 @@
     border-radius: 3px;
 }
 
+.SignLink {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    text-decoration: none;
+}
+
 .SignOut {
     margin-left: 10px;
     margin-right: 10px;

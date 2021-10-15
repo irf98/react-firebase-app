@@ -12,34 +12,35 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*
-        if ( passwordRef.current.value ) {
-            return('Passwords do not match');
-        }
-        */
+        
         return new Promise( (resolve, reject) => {
             signIn( emailRef.current.value, 
                     passwordRef.current.value 
                 ).then( () => {
                 resolve('Success');
                 setLoading(true);
-                console.log('Logged in');
                 returnHome.push('/');
             }).catch( (error) => {
                 reject(error);
-                console.log(error);
+                window.location.reload();
             });
         });
     }
 
     return (
-        <div className='SignUp'>
+        <div className='SignIn'>
+            <h3>Welcome back! Sign In with email and password.</h3>
             <form className='SignForm' onSubmit={ handleSubmit }>
                 <input className='SignInput' type='email' placeholder='Email' ref={emailRef} required/>
-                <input className='SignInput' type='text' placeholder='Password' ref={passwordRef} required/>
-                <button className='ConfirmUser' type='submit' disabled={loading}>Sign In</button>
+                <input className='SignInput' type='password' placeholder='Password' ref={passwordRef} required/>
+                <button className='ConfirmLogin' type='submit' disabled={loading}>Sign In</button>
             </form>
-            <h5>Don't have an account?</h5><Link to={`/signup`}>Sign Up</Link>
+            <h5>Don't have an account?</h5>
+            <div className='RecoveryLinks'>
+                <Link className='RedirectLink' to={`/signup`}>Sign Up</Link>
+                <span>or</span>
+                <Link className='ForgotMessage' to={`/accountrecovery`}>Forgot password?</Link>
+            </div>
         </div>
     );
 }
