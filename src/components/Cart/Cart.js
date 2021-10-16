@@ -1,6 +1,6 @@
 import './Cart.css';
 import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { createOrder } from '../../services/firebase/firebase';
 import { useAuth } from '../../context/UserContext';
 import CartContext from '../../context/CartContext';
@@ -10,10 +10,22 @@ const Cart = () => {
     const { user, currentUser, setInfo } = useAuth();
     const [ total, setTotal ] = useState();
     const [ visible, setVisible ] = useState(false);
+    const [ loading, setLoading ] = useState(false);
+    const [ valid, setValid ] = useState(false);
+    const returnHome = useHistory();
     
     useEffect( () => {
-        setTotal(onCalculateTotal)
-    }, [onCalculateTotal] );
+        setTotal( onCalculateTotal );
+    }, [ onCalculateTotal ] );    
+    
+    useEffect( () => {
+        setValid( 
+            user.firstname.trim() !== '' &&
+            user.surname.trim() !== '' && 
+            user.email.trim() !== '' && 
+            user.phone.trim() !== ''
+        );
+    }, [ user ] );
 
     const confirmOrder = (e) => {
         e.preventDefault();
@@ -25,6 +37,8 @@ const Cart = () => {
         }
         createOrder(objOrder).then( () => {
             console.log('Success');
+            setLoading(true);
+            returnHome.push('/');
         }).catch( error => {
             console.log(error);
         }).finally( () => {
@@ -34,7 +48,7 @@ const Cart = () => {
     }
 
     const cancelOrder = () => {
-        setVisible(!visible);
+        setVisible( !visible );
         onClearCart();
     }
 
@@ -70,30 +84,30 @@ const Cart = () => {
                 ))}
             </div>
             <div className='CartOptions'>
-                <h4 className='TotalPrice'>Cart total: ${total}</h4>
+                <h4 className='TotalPrice'>Cart total: ${ total }</h4>
                 <button className='EmptyCartButton' onClick={ () => onClearCart() }>Empty cart</button>
                 <button className='CheckoutButton' onClick={ () => setVisible(!visible) }>Proceed to checkout</button>
             </div>
             { visible &&
                 <div className='CartConfirm'>
                     { !currentUser ?
-                        <form className='OrderForm'>
+                        <form className='OrderForm' onSubmit={ confirmOrder }>
                             <h3 className='FormInfo'>Continue your purchase without an account or Sign In.</h3>
-                            <input className='BuyerInput' type='text' placeholder='First name' value={user.firstname} required onChange={ setInfo('firstname') }/>
-                            <input className='BuyerInput' type='text' placeholder='Last name' value={user.surname} required onChange={ setInfo('surname') }/>
-                            <input className='BuyerInput' type='email' placeholder='Email' value={user.email} required onChange={ setInfo('email') }/>
-                            <input className='BuyerInput' type='tel' placeholder='Phone' value={user.phone} required onChange={ setInfo('phone') }/>
+                            <input className='BuyerInput' type='text' placeholder='First name' value={ user.firstname } onChange={ setInfo('firstname') } required/>
+                            <input className='BuyerInput' type='text' placeholder='Last name' value={ user.surname } onChange={ setInfo('surname') } required/>
+                            <input className='BuyerInput' type='email' placeholder='Email' value={ user.email } onChange={ setInfo('email') } required/>
+                            <input className='BuyerInput' type='tel' placeholder='Phone' value={ user.phone } onChange={ setInfo('phone') } required/>
                             <div className='FormButtons'>
-                                <button className='CancelBuy' onClick={ () => cancelOrder() }>Cancel</button>
-                                <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button>
+                                <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                                <button className='ConfirmBuy' disabled={ !loading && !valid }>Buy Now</button>
                             </div>    
                             <Link to={`/signin`} className='SignOption'>Sign In</Link>
                         </form>
                         :
-                        <div className='FormButtons'>
-                            <button className='CancelBuy' onClick={ () => cancelOrder() }>Cancel</button>
-                            <button className='ConfirmBuy' onClick={ () => confirmOrder() }>Buy Now</button>
-                        </div> 
+                        <form className='FormButtons' onSubmit={ confirmOrder }>
+                            <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                            <button className='ConfirmBuy'>Buy Now</button>
+                        </form> 
                     }
                 </div>
             }

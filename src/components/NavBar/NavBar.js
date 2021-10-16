@@ -62,7 +62,7 @@ const NavBar = () => {
                     </div>
                     :
                     <div className='NavOptionsRight'>
-                        <Link to={`/signin`}><button className='SignOut' onClick={ () => handleSignOut() }>Sign Out</button></Link>
+                        <Link className='SignLink' to={`/signin`}><button className='SignOut' onClick={ () => handleSignOut() }>Sign Out</button></Link>
                         <CartWidget />
                     </div> 
                 }

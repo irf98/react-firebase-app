@@ -15,7 +15,7 @@ export const UserContextProvider = ( {children} ) => {
         firstname: '', surname: '', email: '', phone: ''
     });
 
-    const setInfo = (x) => {
+    const setInfo = ( x ) => {
         return ( {target: {value}} ) => {
             setUser( info => ( {...info, [x]: value} ));
         }
@@ -49,7 +49,7 @@ export const UserContextProvider = ( {children} ) => {
     return (
         <UserContext.Provider value={{ 
             user, 
-            currentUser, 
+            currentUser,
             setInfo, 
             signUp, 
             signIn, 

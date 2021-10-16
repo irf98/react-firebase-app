@@ -1,21 +1,34 @@
 import './SignIn.css';
-import { useRef, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/UserContext';
 import { Link, useHistory } from 'react-router-dom';
 
 const SignIn = () => {
     const [ loading, setLoading ] = useState(false);
+    const [ valid, setValid ] = useState(false);
+    const [ check, setCheck ] = useState( { user: '', password: '' } );
     const { signIn } = useAuth();
     const returnHome = useHistory();
-    const emailRef = useRef();
-    const passwordRef = useRef();
+
+    useEffect( () => {
+        setValid( 
+            check.user.trim() !== '' &&
+            check.password.trim() !== ''
+        );
+    }, [ check ] );
+
+    const checkLogin = ( x ) => {
+        return ( { target: {value} } ) => {
+            setCheck( info => ( {...info, [x]: value} ) );
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         
         return new Promise( (resolve, reject) => {
-            signIn( emailRef.current.value, 
-                    passwordRef.current.value 
+            signIn( check.user, 
+                    check.password 
                 ).then( () => {
                 resolve('Success');
                 setLoading(true);
@@ -31,9 +44,9 @@ const SignIn = () => {
         <div className='SignIn'>
             <h3>Welcome back! Sign In with email and password.</h3>
             <form className='SignForm' onSubmit={ handleSubmit }>
-                <input className='SignInput' type='email' placeholder='Email' ref={emailRef} required/>
-                <input className='SignInput' type='password' placeholder='Password' ref={passwordRef} required/>
-                <button className='ConfirmLogin' type='submit' disabled={loading}>Sign In</button>
+                <input className='SignInput' type='email' placeholder='Email' onChange={ checkLogin( 'user' ) } required/>
+                <input className='SignInput' type='password' placeholder='Password' onChange={ checkLogin( 'password' ) } required/>
+                <button className='ConfirmLogin' disabled={ !loading && !valid }>Sign In</button>
             </form>
             <h5>Don't have an account?</h5>
             <div className='RecoveryLinks'>
