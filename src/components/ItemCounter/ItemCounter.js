@@ -1,13 +1,19 @@
 import './ItemCounter.css';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/UserContext';
+import { IoStar } from "react-icons/io5";
 import CartContext from '../../context/CartContext';
 
 const ItemCounter = ( {item} ) => {
-    const { cart, onAddItem } = useContext(CartContext);
+    const { cart, onAddItem, onAddWish } = useContext(CartContext);
+    const { currentUser } = useAuth();
     const stockInCart = cart.find( result => result.id === item.id );
     const stockAvailable = item.stock - ( stockInCart?.quantity || 0 );
     const [ count, setCount ] = useState( stockAvailable > 0 ? 1 : 0 );
+    
+
+    
     
     return (
         <div className='ItemCounter'>
@@ -16,7 +22,14 @@ const ItemCounter = ( {item} ) => {
                 <h4>{ count }</h4>
                 <button className='Counter' onClick={ () => count < stockAvailable ? setCount (count + 1) : setCount (count) }>+</button>
             </div>
-            <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+            { !currentUser ? 
+                <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+            :
+                <>
+                    <button className='AddWish' title='Add to wishlist' onClick={ () => onAddWish(item, count) }><IoStar /></button>
+                    <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+                </>
+            }
         </div>
     );
 }

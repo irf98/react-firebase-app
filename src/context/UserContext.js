@@ -16,8 +16,8 @@ export const UserContextProvider = ( {children} ) => {
     });
 
     const setInfo = ( x ) => {
-        return ( {target: {value}} ) => {
-            setUser( info => ( {...info, [x]: value} ));
+        return ( { target: {value} } ) => {
+            setUser( info => ( {...info, [x]: value} ) );
         }
     }
 

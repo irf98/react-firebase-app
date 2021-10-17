@@ -38,7 +38,7 @@
 }
 
 .AddCart {
-    width: 200px;
+    width: 150px;
     height: 30px;
     padding: 5px 10px 5px 10px;
     font-weight: bold;
@@ -48,6 +48,17 @@
     border-radius: 3px;
 }
 
-.AddCart:hover {
+.AddWish {
+    width: 30px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f3ce13;
+    border: #f3ce13;
+    border-radius: 3px;
+}
+
+.AddCart:hover, .AddWish:hover {
     background-color: #a38a0a;
 }
