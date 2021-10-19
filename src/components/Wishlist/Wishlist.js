@@ -6,9 +6,9 @@ import CartContext from '../../context/CartContext';
 
 const Wishlist = () => {
     const { wish, onRemoveWish, onAddWishToCart } = useContext(CartContext);
-    const { currentUser } = useAuth();
+    const { user } = useAuth();
 
-    if ( currentUser && wish.length === 0 ) {
+    if ( user && wish.length === 0 ) {
         return (
             <>
                 <h2 className='EmptyWishlistMessage'>Your Wishlist it's currently empty.</h2>
@@ -19,7 +19,7 @@ const Wishlist = () => {
 
     return (
         <>
-            { !currentUser ?
+            { !user ?
                 <h2 className='NoLoginMessage'><Link to={`/signin`}>Sign In</Link> or <Link to={`/signup`}>Sign Up</Link> to start saving your products.</h2>
                 :
                 <div className='WishlistContainer'>

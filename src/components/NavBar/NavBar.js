@@ -8,7 +8,7 @@ import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
     const [ products, setProducts ] = useState([]);
-    const { currentUser, signOut } = useAuth();
+    const { user, signOut } = useAuth();
 
     useEffect( () => {
         getProducts().then( products => {
@@ -24,7 +24,7 @@ const NavBar = () => {
     const handleSignOut = () => {
         return new Promise( (resolve, reject) => {
             signOut().then( () => {
-                resolve('Success')
+                resolve('Success');
             }).catch( (error) => {
                 reject(error);
             });
@@ -54,7 +54,7 @@ const NavBar = () => {
                 </div>
             </div>
             <div className='RightNav'>
-                { !currentUser ?
+                { !user ?
                     <div className='NavOptionsRight'>
                         <Link className='SignLink' to={`/signin`}><button className='Option'>Sign In</button></Link>
                         <Link className='SignLink' to={`/signup`}><button className='Option'>Sign Up</button></Link>

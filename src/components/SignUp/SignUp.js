@@ -8,8 +8,8 @@ const SignUp = () => {
     const [ agree, setAgree ] = useState(false);
     const [ valid, setValid ] = useState(false);
     const [ password, setPassword ] = useState( { password: '', confirmPassword: '' } );
-    const { signUp, setInfo, user } = useAuth();
-    const returnHome = useHistory();
+    const { signUp, setInfo, user, userData, saveUserInfo } = useAuth();
+    const history = useHistory();
     
     const handleCheckbox = () => {
         setAgree(!agree);
@@ -23,14 +23,13 @@ const SignUp = () => {
 
     useEffect( () => {
         setValid( 
-            user.email.trim() !== '' &&
-            user.firstname.trim() !== '' && 
-            user.surname.trim() !== '' && 
-            user.phone.trim() !== '' && 
+            userData.email.trim() !== '' &&
+            userData.displayName.trim() !== '' && 
+            userData.phoneNumber.trim() !== '' && 
             password.password !== '' &&
             password.confirmPassword !== ''
         );
-    }, [ user, password ] );
+    }, [ userData, password ] );
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,15 +39,15 @@ const SignUp = () => {
         }
 
         return new Promise( (resolve, reject) => {
-            signUp( user.email, 
-                    password.password, 
-                    user.firstname, 
-                    user.surname, 
-                    user.phone 
+            signUp( userData.email, 
+                    password.password
                 ).then( () => {
-                resolve(user);
+                resolve(userData);
+                saveUserInfo();
+                console.log(userData);
+                console.log(user);
                 setLoading(true);
-                returnHome.push('/');
+                history.push('/');
             }).catch( (error) => {
                 reject(error);
             });
@@ -59,9 +58,8 @@ const SignUp = () => {
         <div className='SignUp'>
             <h3>Welcome to Movies Store! Sign Up by filling the form.</h3>
             <form className='SignForm' onSubmit={ handleSubmit }>
-                <input className='SignInput' type='text' placeholder='First name' onChange={ setInfo('firstname') } required/>
-                <input className='SignInput' type='text' placeholder='Last name' onChange={ setInfo('surname') } required/>
-                <input className='SignInput' type='tel' placeholder='Phone' onChange={ setInfo('phone') } required/>
+                <input className='SignInput' type='text' placeholder='Full name' onChange={ setInfo('displayName') } required/>
+                <input className='SignInput' type='tel' placeholder='Phone' onChange={ setInfo('phoneNumber') } required/>
                 <input className='SignInput' type='email' placeholder='Email' onChange={ setInfo('email') } required/>
                 <input className='SignInput' type='password' placeholder='Password' onChange={ setCheck('password') } required/>
                 <input className='SignInput' type='password' placeholder='Confirm password' onChange={ setCheck('confirmPassword') } required/>

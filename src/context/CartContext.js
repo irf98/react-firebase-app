@@ -65,7 +65,8 @@ export const CartContextProvider = ( {children} ) => {
             updatedCart.push( {...product } );
         }
         setCart(updatedCart);
-        setWish([]);
+        wish.splice( itemInCart, 1 );
+        setWish(wish);
     }
 
     const onClearCart = () => {

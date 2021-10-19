@@ -12,25 +12,28 @@ const ItemCounter = ( {item} ) => {
     const stockAvailable = item.stock - ( stockInCart?.quantity || 0 );
     const [ count, setCount ] = useState( stockAvailable > 0 ? 1 : 0 );
     
-
-    
-    
     return (
-        <div className='ItemCounter'>
-            <div className='CounterButtons'>
-                <button className='Counter' onClick={ () => count > 1 ? setCount (count - 1) : setCount (count) }>-</button>
-                <h4>{ count }</h4>
-                <button className='Counter' onClick={ () => count < stockAvailable ? setCount (count + 1) : setCount (count) }>+</button>
-            </div>
-            { !currentUser ? 
-                <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
-            :
-                <>
-                    <button className='AddWish' title='Add to wishlist' onClick={ () => onAddWish(item, count) }><IoStar /></button>
-                    <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
-                </>
+        <>
+            { stockAvailable ? 
+                <div className='ItemCounter'>
+                    <div className='CounterButtons'>
+                        <button className='Counter' onClick={ () => count > 1 ? setCount (count - 1) : setCount (count) }>-</button>
+                        <h4>{ count }</h4>
+                        <button className='Counter' onClick={ () => count < stockAvailable ? setCount (count + 1) : setCount (count) }>+</button>
+                    </div>
+                    { !currentUser ? 
+                        <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+                    :
+                        <>
+                            <button className='AddWish' title='Add to wishlist' onClick={ () => onAddWish(item, count) }><IoStar /></button>
+                            <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+                        </>
+                    }
+                </div>
+                :
+                <h3>No more stock.</h3>
             }
-        </div>
+        </>
     );
 }
 

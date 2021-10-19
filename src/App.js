@@ -11,6 +11,7 @@ import SignIn from './components/SignIn/SignIn';
 import AccountRecovery from './components/AccountRecovery/AccountRecovery';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import Checkout from './components/Checkout/Checkout';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
                   </Route>
                   <Route path='/product/:id'>
                     <ItemDetailContainer />
+                  </Route>
+                  <Route path='/checkout'>
+                    <Checkout />
                   </Route>
                 </Switch>
               </main>

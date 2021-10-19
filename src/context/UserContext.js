@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../services/firebase/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "@firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, updateProfile } from "@firebase/auth";
 
 const UserContext = React.createContext();
 
@@ -11,18 +11,30 @@ export const useAuth = () => {
 export const UserContextProvider = ( {children} ) => {
     const [ currentUser, setCurrentUser ] = useState();
     const [ loading, setLoading ] = useState(true);
-    const [ user, setUser ] = useState({
-        firstname: '', surname: '', email: '', phone: ''
+    const [ userData, setUserData ] = useState({
+        displayName: '', email: '', phoneNumber: ''
     });
+
+    const user = auth.currentUser;
 
     const setInfo = ( x ) => {
         return ( { target: {value} } ) => {
-            setUser( info => ( {...info, [x]: value} ) );
+            setUserData( info => ( {...info, [x]: value} ) );
         }
     }
 
+    const saveUserInfo = () => {
+        updateProfile( auth.currentUser, {
+            displayName: userData.displayName
+        }).then( () => {
+            console.log('profile updated');
+        }).catch( (error) => {
+            console.log(error);
+        });
+    }
+
     useEffect( () => {
-        const unsuscribe = auth.onAuthStateChanged( user => {
+        const unsuscribe = onAuthStateChanged( auth, (user) => {
             setCurrentUser(user);
             setLoading(false);
         });
@@ -48,8 +60,10 @@ export const UserContextProvider = ( {children} ) => {
 
     return (
         <UserContext.Provider value={{ 
-            user, 
+            user,
             currentUser,
+            userData,
+            saveUserInfo,
             setInfo, 
             signUp, 
             signIn, 

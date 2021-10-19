@@ -8,7 +8,7 @@ const SignIn = () => {
     const [ valid, setValid ] = useState(false);
     const [ check, setCheck ] = useState( { user: '', password: '' } );
     const { signIn } = useAuth();
-    const returnHome = useHistory();
+    const history = useHistory();
 
     useEffect( () => {
         setValid( 
@@ -32,7 +32,7 @@ const SignIn = () => {
                 ).then( () => {
                 resolve('Success');
                 setLoading(true);
-                returnHome.push('/');
+                history.push('/');
             }).catch( (error) => {
                 reject(error);
                 window.location.reload();
