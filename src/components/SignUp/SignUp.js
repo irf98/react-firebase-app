@@ -8,7 +8,7 @@ const SignUp = () => {
     const [ agree, setAgree ] = useState(false);
     const [ valid, setValid ] = useState(false);
     const [ password, setPassword ] = useState( { password: '', confirmPassword: '' } );
-    const { signUp, setInfo, user, userData, saveUserInfo } = useAuth();
+    const { signUp, setInfo, userData, saveUserInfo } = useAuth();
     const history = useHistory();
     
     const handleCheckbox = () => {
@@ -43,8 +43,6 @@ const SignUp = () => {
                 ).then( () => {
                 resolve(userData);
                 saveUserInfo();
-                console.log(userData);
-                console.log(user);
                 setLoading(true);
                 history.push('/');
             }).catch( (error) => {

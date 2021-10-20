@@ -41,7 +41,7 @@ const SignIn = () => {
     return (
         <div className='SignIn'>
             <h3>Welcome back! Sign In with email and password.</h3>
-                { errorMessage && <div className='ErrorMessage'>{errorMessage}</div>}
+                { errorMessage && <h4 className='ErrorMessage'>{errorMessage.replace( 'auth/user-not-found', 'Incorrect email and password combination.' )}</h4>}
             <form className='SignForm' onSubmit={ handleSubmit }>
                 <input className='SignInput' type='email' placeholder='Email' onChange={ checkLogin( 'user' ) } required/>
                 <input className='SignInput' type='password' placeholder='Password' onChange={ checkLogin( 'password' ) } required/>

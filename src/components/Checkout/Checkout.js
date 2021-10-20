@@ -1,23 +1,16 @@
 import './Checkout.css';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
 
 const Checkout = () => {
-    const [ loading, setLoading ] = useState(true);
     const history = useHistory();
-    const objOrder = history.location.state;
+    const details = history.location.state;
+    const order = Object.keys(details).map( e => details[e] );
 
     return (
         <div className='CheckoutContainer'>
-            {loading}
-            <h3>Your order resume.</h3>
-            <div className='OrderDisplay'>
-                <h3 className='CheckItem'>Order by:</h3>
-                <h3 className='CheckItem'>Email:</h3>
-                <h3 className='CheckItem'>Date:</h3>
-                <h3 className='CheckItem'>Order ID:</h3>
-                <h3 className='CheckItem'>Products:</h3>
-            </div>
+            <h4>Thank you for your purchase!</h4>
+            <h3>Your order ID: {order[4]}</h3>
+            <Link to={`/`} className='ReturnLink'><button className='ReturnHome'>Back to home</button></Link>
         </div>
     );
 }

@@ -12,6 +12,12 @@
     text-decoration: none;
 }
 
+.ErrorMessage {
+    color: #f31313;
+    margin: 0 auto;
+    padding: 0px;
+}
+
 .ForgotMessage {
     margin: 0 auto;
     padding: 0;
