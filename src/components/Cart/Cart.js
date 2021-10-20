@@ -32,7 +32,6 @@ const Cart = () => {
         if ( user !== null ) {
             userData.displayName = user.displayName
             userData.email = user.email
-            userData.phoneNumber = user.phoneNumber
         }
 
         const objOrder = {
@@ -41,15 +40,12 @@ const Cart = () => {
             total: total
         }
 
-        createOrder(objOrder).then( () => {
+        createOrder(objOrder).then( (objOrder) => {
             setLoading(true);
-            console.log(objOrder);
-            history.push('/checkout');
+            onClearCart();
+            history.push( '/checkout', objOrder );
         }).catch( error => {
             console.log(error);
-        }).finally( () => {
-            onClearCart();
-            setTotal(0);
         });
     }
 

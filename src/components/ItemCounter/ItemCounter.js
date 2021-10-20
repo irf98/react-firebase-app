@@ -31,7 +31,7 @@ const ItemCounter = ( {item} ) => {
                     }
                 </div>
                 :
-                <h3>No more stock.</h3>
+                <h3>Out of stock.</h3>
             }
         </>
     );

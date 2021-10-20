@@ -1,23 +1,11 @@
 import './Checkout.css';
-import { useEffect, useState } from 'react';
-import { getOrderDetails } from '../../services/firebase/firebase';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 
 const Checkout = () => {
     const [ loading, setLoading ] = useState(true);
-    const [ order, setOrder ] = useState([]);
-
-    useEffect( () => {
-        setLoading(true);
-        getOrderDetails().then( order => {
-            setOrder(order);
-        }).catch( (error) => {
-            console.log(error);
-        }).finally( () => {
-            setLoading(false);
-        });
-    }, [] );
-
-    console.log(order);
+    const history = useHistory();
+    const objOrder = history.location.state;
 
     return (
         <div className='CheckoutContainer'>

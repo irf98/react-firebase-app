@@ -18,24 +18,6 @@ export const getFirebase = () => { return app }
 export const db = getFirestore(app);
 export const auth = getAuth();
 
-/*
-export const createUser = (user) => {
-    return new Promise( (resolve, reject) => {
-        user = {
-            ...user
-        }
-        const batch = writeBatch(db);
-        addDoc( collection( db, 'users' ), user ).then( () => {
-            batch.commit().then( () => {
-                resolve('Success');
-            }).catch( (error) => {
-                reject(error);
-            });
-        });
-    });
-}
-*/
-
 export const getProducts = ( key, operator, value ) => {
     return new Promise( (resolve, reject) => {
         const collectionQuery = key && operator && value ? query( collection( db, 'items' ), where( key, operator, value ) ) : collection( db, 'items' );
@@ -82,27 +64,13 @@ export const createOrder = (objOrder) => {
             });
         });
         if ( outOfStock.length === 0 ) {
-            addDoc( collection( db, 'orders' ), objOrder ).then( () => {
+            addDoc( collection( db, 'orders' ), objOrder ).then( docRef => {
                 batch.commit().then( () => {
-                    resolve('Success');
+                    resolve( {...objOrder, id: docRef.id} );
                 }).catch( (error) => {
                     reject(error);
                 });
             });
         }
-    });
-}
-
-export const getOrderDetails = () => {
-    return new Promise( (resolve, reject) => {
-        const collectionQuery = collection( db, 'orders' );
-        getDocs(collectionQuery).then( (querySnapshot) => {
-            const order = querySnapshot.docs.map( doc => {
-                return { id: doc.id, ...doc.data() }
-            });
-            resolve(order);
-        }).catch( (error) => {
-            reject(error);
-        });
     });
 }

@@ -24,8 +24,7 @@ const SignUp = () => {
     useEffect( () => {
         setValid( 
             userData.email.trim() !== '' &&
-            userData.displayName.trim() !== '' && 
-            userData.phoneNumber.trim() !== '' && 
+            userData.displayName.trim() !== '' &&
             password.password !== '' &&
             password.confirmPassword !== ''
         );
@@ -59,7 +58,6 @@ const SignUp = () => {
             <h3>Welcome to Movies Store! Sign Up by filling the form.</h3>
             <form className='SignForm' onSubmit={ handleSubmit }>
                 <input className='SignInput' type='text' placeholder='Full name' onChange={ setInfo('displayName') } required/>
-                <input className='SignInput' type='tel' placeholder='Phone' onChange={ setInfo('phoneNumber') } required/>
                 <input className='SignInput' type='email' placeholder='Email' onChange={ setInfo('email') } required/>
                 <input className='SignInput' type='password' placeholder='Password' onChange={ setCheck('password') } required/>
                 <input className='SignInput' type='password' placeholder='Confirm password' onChange={ setCheck('confirmPassword') } required/>

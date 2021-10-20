@@ -7,6 +7,7 @@ const SignIn = () => {
     const [ loading, setLoading ] = useState(false);
     const [ valid, setValid ] = useState(false);
     const [ check, setCheck ] = useState( { user: '', password: '' } );
+    const [ errorMessage, setErrorMessage ] = useState(null);
     const { signIn } = useAuth();
     const history = useHistory();
 
@@ -25,24 +26,22 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        return new Promise( (resolve, reject) => {
-            signIn( check.user, 
-                    check.password 
-                ).then( () => {
-                resolve('Success');
-                setLoading(true);
-                history.push('/');
-            }).catch( (error) => {
-                reject(error);
-                window.location.reload();
-            });
+        setErrorMessage(null);
+
+        signIn( check.user, 
+                check.password 
+            ).then( () => {
+            setLoading(true);
+            history.push('/');
+        }).catch( (error) => {
+            setErrorMessage(error.code);
         });
     }
 
     return (
         <div className='SignIn'>
             <h3>Welcome back! Sign In with email and password.</h3>
+                { errorMessage && <div className='ErrorMessage'>{errorMessage}</div>}
             <form className='SignForm' onSubmit={ handleSubmit }>
                 <input className='SignInput' type='email' placeholder='Email' onChange={ checkLogin( 'user' ) } required/>
                 <input className='SignInput' type='password' placeholder='Password' onChange={ checkLogin( 'password' ) } required/>
