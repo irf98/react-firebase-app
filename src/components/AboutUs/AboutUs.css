@@ -1,0 +1,16 @@
+.AboutUsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.AboutTitle {
+    color: rgb(214, 207, 207);
+    font-size: xx-large;
+}
+
+.InfoText {
+    color: rgb(214, 207, 207);
+    font-size: large;
+}

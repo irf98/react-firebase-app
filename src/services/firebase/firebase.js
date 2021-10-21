@@ -4,12 +4,12 @@ import { collection, getDocs, query, where, doc, getDoc, writeBatch, addDoc, Tim
 import { getAuth } from '@firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC0oICYq48CDr69YDjmrCjWR-DoKb5YwaA",
-    authDomain: "react-proyect-fb.firebaseapp.com",
-    projectId: "react-proyect-fb",
-    storageBucket: "react-proyect-fb.appspot.com",
-    messagingSenderId: "945947132455",
-    appId: "1:945947132455:web:32da407abe583e2f904402"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 const app = firebase.initializeApp(firebaseConfig);

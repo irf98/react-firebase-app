@@ -5,6 +5,7 @@ import { CartContextProvider } from './context/CartContext';
 import { UserContextProvider } from './context/UserContext';
 import NavBar from './components/NavBar/NavBar';
 import Wishlist from './components/Wishlist/Wishlist';
+import AboutUs from './components/AboutUs/AboutUs';
 import Cart from './components/Cart/Cart';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
@@ -36,6 +37,9 @@ function App() {
                   </Route>
                   <Route path='/wishlist'>
                     <Wishlist />
+                  </Route>
+                  <Route path='/aboutus'>
+                    <AboutUs />
                   </Route>
                   <Route path='/cart'>
                     <Cart />

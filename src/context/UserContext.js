@@ -27,7 +27,7 @@ export const UserContextProvider = ( {children} ) => {
         updateProfile( auth.currentUser, {
             displayName: userData.displayName
         }).then( () => {
-            console.log('profile updated');
+            console.log('Success');
         }).catch( (error) => {
             console.log(error);
         });

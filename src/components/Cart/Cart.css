@@ -169,6 +169,27 @@
     justify-content: space-between;
 }
 
+.FormButtonsUser {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #222222;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px black;
+    border: 2px solid  black
+
+}
+
+.FormButtonsUser span {
+    margin: 10px;
+    margin-top: 15px;
+    padding: 0;
+    color: rgb(214, 207, 207);
+}
+
 .OrderForm {
     display: flex;
     flex-direction: column;

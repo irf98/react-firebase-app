@@ -37,17 +37,14 @@ const SignUp = () => {
             return window.location.reload();
         }
 
-        return new Promise( (resolve, reject) => {
-            signUp( userData.email, 
-                    password.password
-                ).then( () => {
-                resolve(userData);
-                saveUserInfo();
-                setLoading(true);
-                history.push('/');
-            }).catch( (error) => {
-                reject(error);
-            });
+        signUp( userData.email, 
+                password.password
+            ).then( () => {
+            saveUserInfo();
+            setLoading(true);
+            history.push('/');
+        }).catch( (error) => {
+            console.error(error);
         });
     }
 

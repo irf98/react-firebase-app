@@ -45,7 +45,7 @@ const Cart = () => {
             onClearCart();
             history.push( '/checkout', objOrder );
         }).catch( error => {
-            console.log(error);
+            console.error(error);
         });
     }
 
@@ -90,27 +90,30 @@ const Cart = () => {
                 <button className='EmptyCartButton' onClick={ () => onClearCart() }>Empty cart</button>
                 <button className='CheckoutButton' onClick={ () => setVisible(!visible) }>Proceed to checkout</button>
             </div>
-            { visible &&
-                <div className='CartConfirm'>
+            { visible && 
+                <>
                     { !user ?
-                        <form className='OrderForm' onSubmit={ confirmOrder }>
-                            <h3 className='FormInfo'>Continue your purchase without an account or Sign In.</h3>
-                            <input className='BuyerInput' type='text' placeholder='Full name' value={ userData.displayName } onChange={ setInfo('displayName') } required/>
-                            <input className='BuyerInput' type='email' placeholder='Email' value={ userData.email } onChange={ setInfo('email') } required/>
-                            <input className='BuyerInput' type='tel' placeholder='Phone' value={ userData.phoneNumber } onChange={ setInfo('phoneNumber') } required/>
-                            <div className='FormButtons'>
-                                <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
-                               <button className='ConfirmBuy' disabled={ !loading && !valid }>Buy Now</button>
-                            </div>    
-                            <Link to={`/signin`} className='SignOption'>Sign In</Link>
-                        </form>
+                        <div className='CartConfirm'>
+                            <form className='OrderForm' onSubmit={ confirmOrder }>
+                                <h3 className='FormInfo'>Continue your purchase without an account or Sign In.</h3>
+                                <input className='BuyerInput' type='text' placeholder='Full name' value={ userData.displayName } onChange={ setInfo('displayName') } required/>
+                                <input className='BuyerInput' type='email' placeholder='Email' value={ userData.email } onChange={ setInfo('email') } required/>
+                                <input className='BuyerInput' type='tel' placeholder='Phone' value={ userData.phoneNumber } onChange={ setInfo('phoneNumber') } required/>
+                                <div className='FormButtons'>
+                                    <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                                    <button className='ConfirmBuy' disabled={ !loading && !valid }>Buy Now</button>
+                                </div>    
+                                <Link to={`/signin`} className='SignOption'>Sign In</Link>
+                            </form>
+                        </div>
                         :
-                        <form className='FormButtons' onSubmit={ confirmOrder }>
+                        <form className='FormButtonsUser' onSubmit={ confirmOrder }>
                             <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                            <span>or</span>
                             <button className='ConfirmBuy'>Buy Now</button>
                         </form>
                     }
-                </div>
+                </>
             }
         </>
     );

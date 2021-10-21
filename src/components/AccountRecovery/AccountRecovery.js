@@ -7,8 +7,9 @@ const AccountRecovery = () => {
     const [ loading, setLoading ] = useState(false);
     const [ valid, setValid ] = useState(false);
     const [ check, setCheck ] = useState( { email: '' } );
+    const [ errorMessage, setErrorMessage ] = useState(null);
     const { resetPassword } = useAuth();
-    const returnHome = useHistory();
+    const history = useHistory();
 
     useEffect( () => {
         setValid( 
@@ -24,22 +25,20 @@ const AccountRecovery = () => {
 
     const handleRecovery = (e) => {
         e.preventDefault();
+        setErrorMessage(null);
         
-        return new Promise( (resolve, reject) => {
-            resetPassword( check.email ).then( () => {
-                resolve('Success');
-                setLoading(true);
-                returnHome.push('/');
-            }).catch( (error) => {
-                reject(error);
-                window.location.reload();
-            });
+        resetPassword( check.email ).then( () => {
+            setLoading(true);
+            history.push('/');
+        }).catch( (error) => {
+            setErrorMessage(error.code);
         });
     }
 
     return (
         <div className='AccountRecovery'>
             <h3>Please fill the form with your email address.</h3>
+            { errorMessage && <h4 className='ErrorMessage'>{errorMessage.replace( 'auth/user-not-found', `The email address that you've entered doesn't match any account.` ) }</h4>}
             <form className='RecoveryForm' onSubmit={ handleRecovery }>
                 <input className='RecoveryInput' type='email' placeholder='Email' onChange={ checkEmail( 'email' ) } required/>
                 <button className='ConfirmSend' disabled={ !loading && !valid }>Send</button>

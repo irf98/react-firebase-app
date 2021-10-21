@@ -2,22 +2,24 @@ import './NavBar.css';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../services/firebase/firebase';
 import { Link } from 'react-router-dom';
-import { IoSearch, IoStar } from "react-icons/io5";
 import { useAuth } from '../../context/UserContext';
 import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
-    const [ products, setProducts ] = useState([]);
+    const [ categories, setCategories ] = useState([]);
     const { user, signOut } = useAuth();
 
     useEffect( () => {
         getProducts().then( products => {
-            setProducts(products);
+            const temp = {};
+            products.forEach( e => {
+                temp[e.genre] = e.id;
+            });
+            setCategories(Object.keys(temp).sort((a,b) => a.localeCompare(b)).map( e => {
+                return { id: temp[e], category: e }
+            }));
         }).catch( (error) => {
             console.log(error);
-        });
-        return ( () => {
-            setProducts([]);
         });
     }, [] );
 
@@ -39,18 +41,13 @@ const NavBar = () => {
                     <div className='DropdownMenu'>
                         <button className='CategoriesButton'>Categories</button>
                         <div className='DropCategories'>
-                            { products.map( item =>
-                                <Link to={`/categories/${item.genre}`} className='DropItem' key={item.id}>{item.genre}</Link>
+                            { categories.map( e =>
+                                <Link to={`/categories/${e.category}`} className='DropItem' key={e.id}>{e.category}</Link>
                             )}
                         </div>
                     </div>
-                    <form className='NavSearch'>
-                        <input className='NavSearchInput' type='search' placeholder=' search a movie by title...'/>
-                        <button className='SearchButton' type='submit' title='Search'><IoSearch /></button>
-                    </form>
-                    <Link to={`/wishlist`} className='WishLink'>
-                        <button className='Wishlist' title='Wishlist'><IoStar /></button>
-                    </Link>
+                    <Link to={`/wishlist`} className='WishLink'><button className='Wishlist' title='Wishlist'>Wishlist</button></Link>
+                    <Link to={`/aboutus`} className='AboutLink'><button className='AboutUs'>About Us</button></Link>
                 </div>
             </div>
             <div className='RightNav'>

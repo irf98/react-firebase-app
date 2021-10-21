@@ -15,6 +15,7 @@
     justify-content: center;
     padding: 10px;
     margin: 10px;
+    margin-right: 150px;
     width: 285px;
 }
 
@@ -23,13 +24,14 @@
     justify-content: center;
     padding: 10px;
     margin: 10px;
-    width: 800px;
+    width: 300px;
 }
 
 .NavOptionsLeft, .WishLink {
     display: flex;
     justify-content: space-between;
     text-align: center;
+    text-decoration: none;
 }
 
 .NavOptionsRight {
@@ -40,6 +42,7 @@
 
 .NavLogo {
     text-decoration: none;
+    margin-left: 150px;
 }
 
 .LogoName {
@@ -101,49 +104,25 @@
 
 .DropItem:hover {
     color: #f3ce13;
+    pointer-events: all;
 }
 
 .DropdownMenu > .CategoriesButton:focus + .DropCategories {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: all;
 }
 
-.NavSearch {
-    display: flex;
-    align-items: center;
-}
-
-.NavSearchInput {
-    width: 600px;
-    height: 30px;
-    border-radius: 3px;
-    background-color: rgb(236, 228, 228);
-}
-
-.SearchButton {
-    margin-left: 10px;
-    height: 30px;
-    width: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #f3ce13;
-    border: #f3ce13;
-    border-radius: 3px;
-}
-
-.SearchButton svg, .Wishlist svg {
-    width: 15px;
-    height: 15px;
-}
-
-.SearchButton:hover, .CategoriesButton:hover {
+.CategoriesButton:hover {
     background-color: #a38a0a;
 }
 
-.Wishlist {
+.Wishlist, .AboutUs {
     margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 10px 5px 10px;
     height: 30px;
-    width: 30px;
+    width: 90px;
     font-weight: bold;
     cursor: pointer;
     background-color: rgb(214, 207, 207);
@@ -164,7 +143,7 @@
     border-radius: 3px;
 }
 
-.SignLink {
+.SignLink, .AboutLink {
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -184,6 +163,6 @@
     border-radius: 3px;
 }
 
-.Option:hover, .Wishlist:hover, .SignOut:hover {
+.Option:hover, .Wishlist:hover, .SignOut:hover, .AboutUs:hover {
     background-color: rgb(165, 160, 160);
 }

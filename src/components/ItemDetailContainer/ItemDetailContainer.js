@@ -2,6 +2,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getProductById } from '../../services/firebase/firebase';
+import { FadeLoader } from 'react-spinners';
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-            { loading ? <h2 style={ {color: 'rgb(214, 207, 207)'} }>Loading...</h2> : <ItemDetail item={ product } /> }
+            { loading ? <FadeLoader color={ '#F3CE13' } size={ 20 } loading={ loading } /> : <ItemDetail item={ product } /> }
         </>
     );
 }

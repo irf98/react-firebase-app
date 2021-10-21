@@ -1,36 +1,48 @@
-.EmptyWishlistMessage {
-    color: rgb(214, 207, 207);
-}
-
-.NoLoginMessage, .NoLoginMessage a {
+.EmptyWishlistMessage, .WishlistContainer h3, .NoLoginMessage, .NoLoginMessage a {
     color: rgb(214, 207, 207);
 }
 
 .WishlistContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     width: 100%;
-    height: 100%;
+    max-width: 1000px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #222222;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px black;
+    border: 2px solid  black
 }
 
 .WishlistDisplay {
-    display: inline-block;
-    vertical-align: top;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(214, 207, 207);
+}
+
+.WishSelected {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
     padding: 10px;
-    margin: 20px;
-    text-decoration: none;
-    background-color: #222222;
-    box-shadow: 1px 2px 4px black;
-    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ItemWishImg {
-    width: 161px;
-    height: 280;
+    height: 120px;
+    width: 75px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .WishTitle {
+    width: 250px;
     text-align: left;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -42,6 +54,24 @@
     font-size: medium;
     margin: 0;
     color: rgb(214, 207, 207);
+}
+
+.AddWishToCart {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 21px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    border-color: #f3ce13;
+    background-color: #f3ce13;
+}
+
+.AddWishToCart:hover {
+    background-color: #a38a0a;
+    border-color: #a38a0a;
 }
 
 .WishRemove {
