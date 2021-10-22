@@ -22,11 +22,11 @@ const ItemCounter = ( {item} ) => {
                         <button className='Counter' onClick={ () => count < stockAvailable ? setCount (count + 1) : setCount (count) }>+</button>
                     </div>
                     { !currentUser ? 
-                        <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+                        <Link to={`/cart`}><button className='AddCart' title='Add to cart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
                     :
                         <>
                             <button className='AddWish' title='Add to wishlist' onClick={ () => onAddWish(item, count) }><IoStar /></button>
-                            <Link to={`/cart`}><button className='AddCart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
+                            <Link to={`/cart`}><button className='AddCart' title='Add to cart' onClick={ () => onAddItem(item, count) }>Add to cart</button></Link>
                         </>
                     }
                 </div>

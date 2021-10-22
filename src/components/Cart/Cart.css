@@ -74,7 +74,7 @@
 
 .RemoveButton {
     padding: 5px;
-    margin-left: 10px;
+    margin-left: 45px;
     margin-right: 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -155,7 +155,7 @@
 .CartConfirm {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 350px;
     width: 400px;
     margin: 0 auto;
     background-color: #222222;

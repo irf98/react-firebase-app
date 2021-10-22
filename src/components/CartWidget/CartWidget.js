@@ -13,7 +13,7 @@ const CartWidget = () => {
 
     return (
         <Link to={`/cart`} className='CartWidget'>
-            <button className='CartText'>Cart <span>{CartNumbers} </span>
+            <button className='CartText' title='Cart'>Cart <span>{CartNumbers} </span>
                 <IoCartOutline />
             </button>
         </Link>

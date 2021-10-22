@@ -1,4 +1,4 @@
-.NavBar {
+.NavBar, .NavContent {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -10,24 +10,26 @@
     border-bottom: 4px solid  #f3ce13;
 }
 
+.NavContent {
+    width: 1700px;
+}
+
 .RightNav {
     display: flex;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    margin-right: 150px;
-    width: 285px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    text-align: center;
+    width: 683px;
 }
 
 .LeftNav {
     display: flex;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    width: 300px;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 683px;
 }
 
-.NavOptionsLeft, .WishLink {
+.NavOptionsLeft {
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -42,24 +44,37 @@
 
 .NavLogo {
     text-decoration: none;
-    margin-left: 150px;
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-right: 20px;
 }
 
 .LogoName {
-    margin: 5px;
-    padding: 5px;
+    margin: 0 auto;
+    padding: 0;
     font-size: larger;
-    width: 220px;
+    width: 230px;
     cursor: pointer;
+    text-decoration: none;
     color: rgb(214, 207, 207);
+    transition: transform 150ms ease-in-out;
 }
 
-.DropdownMenu {
+.LogoName:hover {
+    text-shadow: 1px 1px 20px #f3ce13;
+    color: #f3ce13;
+    border-radius: 5px;
+    transform: scale(1.05);
+}
+
+.DropdownMenu, .WishLink, .AboutLink {
     display: flex;
     align-items: center;
     margin: 0 auto;
     padding: 0;
     position: relative;
+    text-decoration: none;
 }
 
 .CategoriesButton {
@@ -70,9 +85,11 @@
     width: 90px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #f3ce13;
-    border: #f3ce13;
+    background-color: #050505;
+    border: #050505;
     border-radius: 3px;
+    color: rgb(214, 207, 207);
+    transition: transform 150ms ease-in-out;
 }
 
 .DropCategories {
@@ -113,8 +130,9 @@
     pointer-events: all;
 }
 
-.CategoriesButton:hover {
-    background-color: #a38a0a;
+.CategoriesButton:hover, .Wishlist:hover, .AboutUs:hover  {
+    color: #f3ce13;
+    transform: scale(1.1);
 }
 
 .Wishlist, .AboutUs {
@@ -125,9 +143,11 @@
     width: 90px;
     font-weight: bold;
     cursor: pointer;
-    background-color: rgb(214, 207, 207);
-    border: rgb(214, 207, 207);
+    background-color: #050505;
+    border: #050505;
     border-radius: 3px;
+    color: rgb(214, 207, 207);
+    transition: transform 150ms ease-in-out;
 }
 
 .Option {
@@ -138,12 +158,14 @@
     width: 70px;
     font-weight: bold;
     cursor: pointer;
-    background-color: rgb(214, 207, 207);
-    border: rgb(214, 207, 207);
+    background-color: #050505;
+    border: #050505;
     border-radius: 3px;
+    color: rgb(214, 207, 207);
+    transition: transform 150ms ease-in-out;
 }
 
-.SignLink, .AboutLink {
+.SignLink {
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -158,11 +180,17 @@
     width: 75px;
     font-weight: bold;
     cursor: pointer;
-    background-color: rgb(214, 207, 207);
-    border: rgb(214, 207, 207);
+    background-color: #b90e0e;
+    border: #b90e0e;
     border-radius: 3px;
+    color: rgb(214, 207, 207);
 }
 
-.Option:hover, .Wishlist:hover, .SignOut:hover, .AboutUs:hover {
-    background-color: rgb(165, 160, 160);
+.SignOut:hover {
+    background-color: #7a0a0a;
+}
+
+.Option:hover {
+    color: #f3ce13;
+    transform: scale(1.1);
 }

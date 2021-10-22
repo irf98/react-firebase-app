@@ -35,34 +35,36 @@ const NavBar = () => {
 
     return (
         <nav className='NavBar'>
-            <Link to={`/`} className='NavLogo'><h1 className='LogoName'>Movies Store</h1></Link>
-            <div className='LeftNav'>
-                <div className='NavOptionsLeft'>
-                    <div className='DropdownMenu'>
-                        <button className='CategoriesButton'>Categories</button>
-                        <div className='DropCategories'>
-                            { categories.map( e =>
-                                <Link to={`/categories/${e.category}`} className='DropItem' key={e.id}>{e.category}</Link>
-                            )}
+            <div className='NavContent'>
+                <div className='LeftNav'>
+                    <div className='NavOptionsLeft'>
+                    <Link to={`/`} className='NavLogo' title='Home'><h1 className='LogoName'>Movies Store</h1></Link>
+                        <div className='DropdownMenu'>
+                            <button className='CategoriesButton' title='Show categories'>Categories</button>
+                            <div className='DropCategories'>
+                                { categories.map( e =>
+                                    <Link to={`/categories/${e.category}`} className='DropItem' key={e.id}>{e.category}</Link>
+                                )}
+                            </div>
                         </div>
+                        <Link to={`/wishlist`} className='WishLink'><button className='Wishlist' title='Wishlist'>Wishlist</button></Link>
+                        <Link to={`/aboutus`} className='AboutLink'><button className='AboutUs' title='About Us'>About Us</button></Link>
                     </div>
-                    <Link to={`/wishlist`} className='WishLink'><button className='Wishlist' title='Wishlist'>Wishlist</button></Link>
-                    <Link to={`/aboutus`} className='AboutLink'><button className='AboutUs'>About Us</button></Link>
                 </div>
-            </div>
-            <div className='RightNav'>
-                { !user ?
-                    <div className='NavOptionsRight'>
-                        <Link className='SignLink' to={`/signin`}><button className='Option'>Sign In</button></Link>
-                        <Link className='SignLink' to={`/signup`}><button className='Option'>Sign Up</button></Link>
-                        <CartWidget />
-                    </div>
-                    :
-                    <div className='NavOptionsRight'>
-                        <Link className='SignLink' to={`/signin`}><button className='SignOut' onClick={ () => handleSignOut() }>Sign Out</button></Link>
-                        <CartWidget />
-                    </div> 
-                }
+                <div className='RightNav'>
+                    { !user ?
+                        <div className='NavOptionsRight'>
+                            <Link className='SignLink' to={`/signin`}><button className='Option' title='Sign In'>Sign In</button></Link>
+                            <Link className='SignLink' to={`/signup`}><button className='Option' title='Sign Up'>Sign Up</button></Link>
+                            <CartWidget />
+                        </div>
+                        :
+                        <div className='NavOptionsRight'>
+                            <Link className='SignLink' to={`/signin`}><button className='SignOut' title='Sign Out' onClick={ () => handleSignOut() }>Sign Out</button></Link>
+                            <CartWidget />
+                        </div> 
+                    }
+                </div>
             </div>
         </nav>
     );

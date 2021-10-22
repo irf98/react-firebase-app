@@ -4,11 +4,12 @@
     width: 170px;
     height: 290px;
     padding: 10px;
-    margin: 20px;
+    margin: 20px 40px;
     text-decoration: none;
     background-color: #222222;
     box-shadow: 1px 2px 4px black;
     border-radius: 5px;
+    transition: transform 150ms ease-in-out;
 }
 
 .ItemDisplay img {
@@ -28,4 +29,8 @@
     font-size: medium;
     margin: 0;
     color: rgb(214, 207, 207);
+}
+
+.ItemDisplay:hover {
+    transform: scale(1.2);
 }

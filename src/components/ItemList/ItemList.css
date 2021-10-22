@@ -1,5 +1,6 @@
 .ItemContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    margin: 0 auto;
 }

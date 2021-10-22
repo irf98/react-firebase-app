@@ -58,7 +58,7 @@ const Cart = () => {
         return (
             <>
                 <h2 className='EmptyCartMessage'>Your Cart it's currently empty.</h2>
-                <Link to={`/`}><button className='BackButton'>Back to the Catalogue</button></Link>
+                <Link to={`/`}><button className='BackButton' title='Back to home'>Back to the Catalogue</button></Link>
             </>
         );
     }
@@ -75,7 +75,7 @@ const Cart = () => {
                 { cart.map( item => (
                     <div className='CartDisplay' key={item.id}>
                         <div className='ItemSelected'>
-                            <button className='RemoveButton' onClick={ () => onRemoveItem(item) }>Remove</button>
+                            <button className='RemoveButton' title='Remove from cart' onClick={ () => onRemoveItem(item) }>X</button>
                             <img className='ItemCartImg' src={`../../${item.pictureUrl}`} title={item.title} alt='Poster'/>
                             <span className='ItemTitle'>{item.title}</span>
                             <span className='ItemPrice'>${item.price}</span>
@@ -87,8 +87,8 @@ const Cart = () => {
             </div>
             <div className='CartOptions'>
                 <h4 className='TotalPrice'>Cart total: ${ total }</h4>
-                <button className='EmptyCartButton' onClick={ () => onClearCart() }>Empty cart</button>
-                <button className='CheckoutButton' onClick={ () => setVisible(!visible) }>Proceed to checkout</button>
+                <button className='EmptyCartButton' title='Empty cart' onClick={ () => onClearCart() }>Empty cart</button>
+                <button className='CheckoutButton' title='Proceed to checkout' onClick={ () => setVisible(!visible) }>Proceed to checkout</button>
             </div>
             { visible && 
                 <>
@@ -100,17 +100,17 @@ const Cart = () => {
                                 <input className='BuyerInput' type='email' placeholder='Email' value={ userData.email } onChange={ setInfo('email') } required/>
                                 <input className='BuyerInput' type='tel' placeholder='Phone' value={ userData.phoneNumber } onChange={ setInfo('phoneNumber') } required/>
                                 <div className='FormButtons'>
-                                    <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
-                                    <button className='ConfirmBuy' disabled={ !loading && !valid }>Buy Now</button>
+                                    <button className='CancelBuy' title='Cancel buy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                                    <button className='ConfirmBuy' title='Confirm buy' disabled={ !loading && !valid }>Buy Now</button>
                                 </div>    
                                 <Link to={`/signin`} className='SignOption'>Sign In</Link>
                             </form>
                         </div>
                         :
                         <form className='FormButtonsUser' onSubmit={ confirmOrder }>
-                            <button className='CancelBuy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
+                            <button className='CancelBuy' title='Cancel buy' type='button' onClick={ () => cancelOrder() }>Cancel</button>
                             <span>or</span>
-                            <button className='ConfirmBuy'>Buy Now</button>
+                            <button className='ConfirmBuy' title='Confirm buy'>Buy Now</button>
                         </form>
                     }
                 </>
