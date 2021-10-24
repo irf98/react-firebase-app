@@ -92,3 +92,23 @@
     border-color: #b90e0e;
     background-color: #b90e0e;
 }
+
+@media screen and (max-width: 850px) {
+    .WishlistContainer {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .WishlistContainer {
+        width: 350px;
+    }
+
+    .WishlistContainer h3, .EmptyWishlistMessage {
+        font-size: medium;
+    }
+
+    .WishTitle, .WishPrice {
+        display: none;
+    }
+}

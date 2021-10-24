@@ -1,4 +1,4 @@
-.LoadingMessage, .EmptyCartMessage {
+.EmptyCartMessage {
     color: rgb(214, 207, 207);
 }
 
@@ -241,4 +241,38 @@
     padding: 0;
     width: 55px;
     color: rgb(214, 207, 207);
+}
+
+@media screen and (max-width: 850px) {
+    .CartContainer, .CartHeader {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .CartContainer, .CartHeader, .CartConfirm {
+        width: 350px;
+    }
+
+    .CartOptions {
+        width: 360px;
+        margin: 0 auto;
+    }
+
+    .Price {
+        display: none;
+    }
+
+    .Total {
+        margin-right: 20px;
+        margin-left: 50px;
+    }
+
+    .ItemPrice, .ItemTitle {
+        display: none;
+    }
+
+    .EmptyCartMessage {
+        font-size: medium;
+    }
 }

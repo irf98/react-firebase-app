@@ -32,3 +32,52 @@
 .DetailContainer p {
     max-width: 500px;
 }
+
+@media screen and (max-width: 850px) {
+    .ItemDetail {
+        width: 700px;
+    }
+
+    .ItemPoster {
+        width: 160px;
+        height: 240px;
+    }
+
+    .DetailContainer {
+        width: 700px;
+    }
+
+    .ItemSynopsis {
+        width: 400px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .ItemDetail {
+        width: 300px;
+        flex-direction: column;
+    }
+
+    .ItemPoster {
+        width: 160px;
+        height: 240px;
+        margin: 0 auto;
+    }
+
+    .DetailContainer {
+        width: 300px;
+    }
+
+    .ItemTitle, .ItemGenre {
+        text-align: center;
+        width: 160px;
+        margin: 5px;
+    }
+
+    .ItemSynopsis {
+        width: 200px;
+        text-align: center;
+    }
+
+}

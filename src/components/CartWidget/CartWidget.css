@@ -23,3 +23,10 @@
 .CartText:hover {
     background-color: #a38a0a;
 }
+
+@media screen and (max-width: 375px) {
+    .CartWidget {
+        width: 100px;
+    }
+}
+

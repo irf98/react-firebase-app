@@ -62,3 +62,33 @@
 .AddCart:hover, .AddWish:hover {
     background-color: #a38a0a;
 }
+
+@media screen and (max-width: 850px) {
+    .ItemCounter {
+        width: 400px;
+    }
+
+    .CounterButtons {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ItemCounter {
+        width: 200px;
+    }
+
+    .CounterButtons {
+        width: 100px;
+    }
+
+    .AddCart {
+        width: 90px;
+    }
+
+    .AddWish {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}

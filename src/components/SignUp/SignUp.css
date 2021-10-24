@@ -79,3 +79,13 @@
     color: rgb(214, 207, 207);
     border-color: #222222;
 }
+
+@media screen and (max-width: 850px) {
+    .SignUp {
+        width: 500px;
+    }
+
+    .TermsAndConditions {
+        width: 100%;
+    }
+}

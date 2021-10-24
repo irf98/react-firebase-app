@@ -73,3 +73,15 @@
   background-color: #050505;
   border-top: 2px solid rgb(214, 207, 207);
 }
+
+@media screen and (max-width: 375px) {
+  .App-main {
+    max-width: 375px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .App-main {
+    max-width: 850px;
+  }
+}

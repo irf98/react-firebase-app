@@ -11,7 +11,7 @@
 }
 
 .NavContent {
-    width: 1700px;
+    width: 1366px;
 }
 
 .RightNav {
@@ -193,4 +193,77 @@
 .Option:hover {
     color: #f3ce13;
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 1366px) {
+    .NavContent {
+        width: 800px;
+    }
+
+    .LeftNav, .RightNav {
+        width: 500px;
+    }
+
+    .NavOptionsRight {
+        margin-right: 20px;
+    }
+
+    .LogoName {
+        width: 200px;
+        margin-left: 20px;
+    }
+
+    .CategoriesButton, .Wishlist, .AboutUs, .Option {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+}
+
+@media screen and (max-width: 850px) {
+    .NavContent {
+        width: 800px;
+    }
+
+    .LeftNav, .RightNav {
+        width: 500px;
+    }
+
+    .NavOptionsRight {
+        margin-right: 20px;
+    }
+
+    .LogoName {
+        width: 200px;
+        margin-left: 20px;
+    }
+
+    .CategoriesButton, .Wishlist, .AboutUs, .Option {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .NavBar {
+        width: 375px;
+    }
+    .NavContent {
+        width: 375px;
+    }
+
+    .CategoriesButton, .Wishlist, .AboutUs, .Option {
+        display: none;
+    }
+
+    .LogoName {
+        margin: 0 auto;
+        margin-top: 4px;
+        width: 200px;
+    }
+
+    .SignOut {
+      margin: 0;
+    }
 }

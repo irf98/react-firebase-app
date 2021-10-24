@@ -68,3 +68,23 @@
     background-color: #a38a0a;
     border-color: #a38a0a;
 }
+
+@media screen and (max-width: 850px) {
+    .SignIn {
+        width: 500px;
+    }
+
+    .RecoveryLinks {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .SignIn {
+        width: 330px;
+    }
+
+    .RecoveryLinks {
+        width: 200px;
+    }
+}
