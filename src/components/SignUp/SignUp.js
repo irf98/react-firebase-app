@@ -8,6 +8,7 @@ const SignUp = () => {
     const [ agree, setAgree ] = useState(false);
     const [ valid, setValid ] = useState(false);
     const [ password, setPassword ] = useState( { password: '', confirmPassword: '' } );
+    const [ errorMessage, setErrorMessage ] = useState(null);
     const { signUp, setInfo, userData, saveUserInfo } = useAuth();
     const history = useHistory();
     
@@ -32,9 +33,10 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErrorMessage(null);
 
         if ( password.password !== password.confirmPassword ) {
-            return window.location.reload();
+            return setErrorMessage('Passwords do not match');
         }
 
         signUp( userData.email, 
@@ -52,6 +54,7 @@ const SignUp = () => {
         <div className='SignUp'>
             <h3>Welcome to Movies Store! Sign Up by filling the form.</h3>
             <form className='SignForm' onSubmit={ handleSubmit }>
+            { errorMessage && <h4 className='ErrorMessage'>{ errorMessage }</h4> }
                 <input className='SignInput' type='text' placeholder='Full name' onChange={ setInfo('displayName') } required/>
                 <input className='SignInput' type='email' placeholder='Email' onChange={ setInfo('email') } required/>
                 <input className='SignInput' type='password' placeholder='Password' onChange={ setCheck('password') } required/>
