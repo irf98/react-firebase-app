@@ -8,7 +8,7 @@ El siguiente proyecto sirve como ejemplo de desarrollo de una App web con ReactJ
 * Carrito interactivo: el usuario puede agregar varias unidades de un mismo producto al mismo tiempo y no perder la cuenta gracias a la incorporación de un contador en el *cart widget*. También se implementó el uso de *localStorage* para que el carrito sea persistente y no se pierdan los productos por algún refresh no deseado de la página.
 * Los productos están presentes en el *Home* de la App o pueden filtrarse por categorías (géneros, en este caso) desde el *NavBar*.
 * Para la navegación de las diferentes *views* de la App se utilizó *react-dom-router*.
-* Como ya fue mencionado, se utilizó *Firebase* como base de datos para alojar los diferentes productos con su informació, ID y stock disponible. Tambien se utilizaron las funcionalidades de *Firebase Auth* para el manejo de usuarios dentro de la App, es posible:
+* Como ya fue mencionado, se utilizó *Firebase* como base de datos para alojar los diferentes productos con su información, ID y stock disponible. Tambien se utilizaron las funcionalidades de *Firebase Auth* para el manejo de usuarios dentro de la App, es posible:
     * Registrarse con email, iniciar sesión y cerrar sesión cuando el usuario lo desee.
     * En caso de no querer registrarse, se puede realizar una compra "anónima" completando los datos en un formulario al darle *"Buy now"* en la la ruta del carrito */cart*.
     * Es posible también recuperar la cuenta vía email, en la pantalla de *Sign in* aparece la opción de *Forgot password?* que al clickearla te ofrece poner tu dirección de email.
