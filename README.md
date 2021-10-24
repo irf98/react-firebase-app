@@ -1,6 +1,6 @@
 # Proyecto App Web con ReactJS
 
-![Screenshot] (/public/img/app-screenshot.png)
+![Screenshot] (/public/img/app-screenshot.PNG)
 
 El siguiente proyecto sirve como ejemplo de desarrollo de una App web con ReactJS y utilizando Firebase como base de datos. Se construyó un e-commerce de películas que cuenta con las siguientes características:
 
